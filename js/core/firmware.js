@@ -52,7 +52,7 @@ export const FIRMWARES = [
   { name: 'LCD-4', author: 'devrvega', kind: 'groove', install: 'browser', url: 'https://devrvega.github.io/LCD-4/install/', desc: '4トラックと、押している間だけかかるエフェクト' },
   { name: 'MC-1', author: 'dspaudio', kind: 'groove', install: 'browser', url: 'https://dspaudio.github.io/mc-1/install.html', desc: '4パート、128プリセット、8つのドラムキット' },
   { name: 'ORBIT', author: 'dspaudio', kind: 'groove', install: 'source', url: 'https://github.com/dspaudio/orbit/releases/latest', desc: 'SLOOP ベースの OP-1 風。テープのように演奏を記録' },
-  { name: 'REDACTED', author: 'DJ Redacted', kind: 'groove', install: 'browser', url: 'https://fm1-redacted-installer.xrhetor.chatgpt.site/', desc: '4トラックのローファイ（実験的）' },
+  { name: 'REDACTED', author: 'DJ Redacted', kind: 'groove', install: 'browser', url: 'https://fm1-redacted-installer.xrhetor.chatgpt.site/', desc: '4トラックのローファイ（実験的）。インストーラーが github.io ではない別の場所にあり、出どころはこの教材では未確認' },
   { name: 'Skiff', author: 'illuminus5', kind: 'groove', install: 'browser', url: 'https://illuminus5.github.io/skiff/webapp/installer/', desc: 'Felucca ベースの6トラック。ブラウザ用エディターつき' },
   { name: 'TRIBE', author: 'apiel', kind: 'groove', install: 'browser', url: 'https://apiel.github.io/fm1-tribe/#install', desc: 'X0X ベースの10トラック。どのトラックでもどのエンジンでも' },
   { name: 'Official Open', author: 'M-VAVE', kind: 'groove', install: 'other', url: 'https://open.m-vave.com/fm1-workbench', desc: 'M-VAVE 公式のオープンソース8トラック・グルーヴボックス（FM1 Workbench で入れる）' },
@@ -83,7 +83,7 @@ export const FIRMWARES = [
   { name: 'WaveLoop FM-1', author: 'ELI7VH', kind: 'chord', install: 'browser', url: 'https://eli7vh.github.io/Felucca/', desc: 'Arturia MiniLab 3 から Felucca を弾く' },
 
   { name: 'PurpleMonkey FM-1', author: 'Quixotic7', kind: 'kids', install: 'browser', url: 'https://quixotic7.github.io/PurpleMonkeyFM1/webapp/installer/', desc: 'どの鍵盤を押しても音や太鼓が鳴る。動物のキャラクター', ch: [14] },
-  { name: 'Rainbow mode', author: 'joshbartlettband-web', kind: 'kids', install: 'browser', url: 'https://joshbartlettband-web.github.io/felucca-rainbow/', desc: '40のキャラクターと音の、子ども向け音楽おもちゃ', ch: [14] },
+  { name: 'Rainbow mode', author: 'joshbartlettband-web', kind: 'kids', install: 'browser', url: 'https://joshbartlettband-web.github.io/felucca-rainbow/', desc: '94のキャラクターと音の、子ども向け音楽おもちゃ。色と文字で鍵盤を覚える', ch: [14] },
 
   { name: 'Doom (E1M1)', author: 'seanohollaren', kind: 'game', install: 'browser', url: 'https://doom.deadlockinteractive.com/', desc: 'Doom がシンセの代わりに動く' },
   { name: 'Doom FM-1 / SMK', author: 'ChanceTheMaker', kind: 'game', install: 'browser', url: 'https://chancethemaker.github.io/doom-fm1-smk/', desc: 'Doom エンジン（FM-1 と SMK-37 用）' },

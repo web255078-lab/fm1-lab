@@ -12,7 +12,7 @@ const ch = createChapter({
   cando: [{"text": "FM 音源が「揺らして倍音を生む」仕組みだと説明できる", "need": ["try1"]}, {"text": "周波数比で、楽器らしい音とベルの音を作り分けられる", "need": ["try2", "bell"]}, {"text": "FM-1 のアルゴリズムとオペレーターを触れる", "need": ["try3", "check"]}, {"text": "FM の用語が分かる", "need": ["quiz"]}],
 });
 
-ch.quiz('quiz', [{"q": "聞こえる方の波は？", "options": ["キャリア", "モジュレーター", "アルゴリズム"], "answer": 0, "explain": ""}, {"q": "揺らす強さを上げると？", "options": ["倍音が増えて明るくなる", "音が小さくなる", "音が低くなる"], "answer": 0, "explain": ""}, {"q": "ベルのような音になりやすい周波数比は？", "options": ["3.5 のような中途半端な数", "1", "2"], "answer": 0, "explain": ""}, {"q": "FM-1 のオペレーターの数は？", "options": ["6", "4", "2"], "answer": 0, "explain": "32のアルゴリズムでつなぎ方を選びます。"}, {"q": "アルゴリズムとは？", "options": ["オペレーターのつなぎ方", "エフェクトの順番", "プリセットの番号"], "answer": 0, "explain": ""}], { need: 4 });
+ch.quiz('quiz', [{"q": "聞こえる方の波は？", "options": ["キャリア", "モジュレーター", "アルゴリズム"], "answer": 0, "explain": ""}, {"q": "揺らす強さを上げると？", "options": ["倍音が増えて明るくなる", "音が小さくなる", "音が低くなる"], "answer": 0, "explain": ""}, {"q": "ベルのような音になりやすい周波数比は？", "options": ["1.41 のような割り切れない数", "1", "2"], "answer": 0, "explain": ""}, {"q": "FM-1 のオペレーターの数は？", "options": ["6", "4", "2"], "answer": 0, "explain": "32のアルゴリズムでつなぎ方を選びます。"}, {"q": "アルゴリズムとは？", "options": ["オペレーターのつなぎ方", "エフェクトの順番", "プリセットの番号"], "answer": 0, "explain": ""}], { need: 4 });
 ch.checklist('check');
 
 
@@ -21,7 +21,7 @@ ch.checklist('check');
 input.setLocalPlayer((ev) => (ev.type === 'on' ? fmOn(ev.note, ev.velocity) : fmOff(ev.note)));
 $('#fmPanel').innerHTML = `
   <label class="ctl"><span class="ctl-name">揺らす強さ</span><input type="range" id="fmIndex" min="0" max="10" step="0.1" value="0"><output id="fmIndexV">0</output></label>
-  <div class="ctl ctl-chips"><span class="ctl-name">揺らす速さの比</span><span class="btn-row">${[1, 2, 3.5, 7].map((r) => `<button class="chip${r === 1 ? ' sel' : ''}" data-ratio="${r}">${r}</button>`).join('')}</span></div>`;
+  <div class="ctl ctl-chips"><span class="ctl-name">揺らす速さの比</span><span class="btn-row">${[1, 2, 1.41, 3.14].map((r) => `<button class="chip${r === 1 ? ' sel' : ''}" data-ratio="${r}">${r}</button>`).join('')}</span></div>`;
 $('#fmIndex').addEventListener('input', (e) => { fm.index = Number(e.target.value); $('#fmIndexV').textContent = fm.index.toFixed(1); fmUpdate(); });
 $$('[data-ratio]').forEach((b) => b.addEventListener('click', () => {
   fm.ratio = Number(b.dataset.ratio);
@@ -71,7 +71,7 @@ $('#fmIndex').addEventListener('change', () => { if (input.heldNotes().length &&
     else { f.textContent = `6問中${correct}問。5問でクリア。8-2 で比を変えて聞き比べてから`; f.className = 'feedback ng'; }
   }));
   start.addEventListener('click', () => {
-    const qs = [{ ratio: 1, kind: 'int' }, { ratio: 2, kind: 'int' }, { ratio: 3, kind: 'int' }, { ratio: 1.41, kind: 'odd' }, { ratio: 3.5, kind: 'odd' }, { ratio: 2.76, kind: 'odd' }];
+    const qs = [{ ratio: 1, kind: 'int' }, { ratio: 2, kind: 'int' }, { ratio: 3, kind: 'int' }, { ratio: 1.41, kind: 'odd' }, { ratio: 3.14, kind: 'odd' }, { ratio: 2.76, kind: 'odd' }];
     order = qs.sort(() => Math.random() - 0.5);
     i = 0; correct = 0; marks = [];
     draw();

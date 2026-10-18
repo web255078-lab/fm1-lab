@@ -327,3 +327,13 @@ svg.flow text.sub { fill: var(--muted); font-size: 11px; font-weight: 400; }
 .star.on { color: #e6b422; }
 .memo { display: grid; gap: 4px; margin: 8px 0; }
 .memo textarea { font: inherit; color: var(--text); background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 8px; }
+
+/* スマホで本文を広く：鍵盤ごとたためる。上部バーを小さく */
+.dock.mini [data-kb], .dock.mini [data-readout] { display: none; }
+.dock.mini { padding-top: 4px; padding-bottom: 4px; }
+@media (max-width: 520px) {
+  .topbar { padding: 6px 10px; gap: 4px 6px; }
+  .topbar .crumb { display: none; }
+  .pill { padding: 4px 9px; font-size: 0.78rem; }
+  .pill.toggle { font-size: 0.74rem; }
+}

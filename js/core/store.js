@@ -146,9 +146,22 @@ export async function askPersist() {
 // 読み込みは「合体」だけ。今ある記録は消さない・古くしない。
 const BACKUP_KEYS = ['progress', 'findings', 'presets', 'fwlog', 'settings', 'fw', 'fwver', 'trash'];
 
+// この教材の保存（PREFIX で始まるもの）を全部拾う。新しい保存を足しても書き出し漏れが起きない
+function allKeys() {
+  const out = new Set(BACKUP_KEYS);
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (k && k.startsWith(PREFIX)) out.add(k.slice(PREFIX.length));
+    }
+  } catch { /* 読めない環境 */ }
+  out.delete('lastExport');
+  return [...out];
+}
+
 export function exportAll() {
   const data = {};
-  for (const k of BACKUP_KEYS) {
+  for (const k of allKeys()) {
     const v = read(k, undefined);
     if (v !== undefined) data[k] = v;
   }
@@ -207,7 +220,25 @@ export function importMerge(obj) {
   if (d.settings) write('settings', { ...d.settings, ...read('settings', {}) });
   for (const k of ['fw', 'fwver']) if (d[k] !== undefined && read(k, undefined) === undefined) write(k, d[k]);
   if (d.trash) write('trash', { ...d.trash, ...read('trash', {}) });
+  // ここまでで扱っていない保存（ふり返りシート、要確認チェックなど）は、いまないものだけ補う
+  const handled = new Set(['progress', 'findings', 'presets', 'fwlog', 'settings', 'trash']);
+  for (const [k, v] of Object.entries(d)) {
+    if (handled.has(k) || k === 'lastExport') continue;
+    const cur = read(k, undefined);
+    if (cur === undefined) write(k, v);
+    else if (cur && v && typeof cur === 'object' && typeof v === 'object' && !Array.isArray(cur)) write(k, { ...v, ...cur });
+  }
   return counts;
 }
 
 export const lastExport = () => read('lastExport', 0);
+
+// 記録を消すときは、必ず控え（trash）に残してから（書き出しにも入る）
+export function clearWithTrash(key) {
+  const v = read(key, undefined);
+  if (v === undefined) return;
+  const trash = read('trash', {});
+  trash[`${key}@${Date.now()}`] = v;
+  write('trash', trash);
+  write(key, {});
+}

@@ -69,9 +69,12 @@ export function createChapter(o) {
       $$('[data-mode]', dock).forEach((c) => c.classList.toggle('sel', c === b));
       scope.mode = b.dataset.mode;
     }));
+    // たたむ：1回目＝窓をたたむ、2回目＝鍵盤もたたむ（本文を広く）、3回目＝元に戻す
     $('[data-fold]', dock).addEventListener('click', (e) => {
-      const folded = dock.classList.toggle('folded');
-      e.target.textContent = folded ? 'ひらく' : 'たたむ';
+      const state = dock.classList.contains('mini') ? 0 : dock.classList.contains('folded') ? 2 : 1;
+      dock.classList.toggle('folded', state >= 1);
+      dock.classList.toggle('mini', state === 2);
+      e.target.textContent = state === 0 ? 'たたむ' : state === 1 ? '鍵盤もたたむ' : 'ひらく';
     });
     const src = $('[data-src]', dock);
     src.addEventListener('change', async () => {
@@ -288,10 +291,12 @@ export function createChapter(o) {
     const box = $('[data-quiz]', el), f = $('.feedback', el), st = $('.status', el), dots = $('.dots', el), start = $('[data-start]', el);
     let order = [], i = 0, correct = 0, marks = [], lock = false;
     const draw = () => (dots.innerHTML = order.map((_, k) => `<i class="${marks[k] || ''}"></i>`).join(''));
+    let shown = []; // 並べ替えたあとの選択肢（元の番号）
     const ask = () => {
       const q = questions[order[i]];
       st.textContent = `${i + 1} / ${order.length}`;
-      box.innerHTML = `<p class="quiz-q quiz-q-sm">${q.q}</p><div class="btn-row">${q.options.map((op, k) => `<button class="chip" data-k="${k}">${op}</button>`).join('')}</div>`;
+      shown = q.options.map((_, k) => k).sort(() => Math.random() - 0.5);
+      box.innerHTML = `<p class="quiz-q quiz-q-sm">${q.q}</p><div class="btn-row">${shown.map((k) => `<button class="chip" data-k="${k}">${q.options[k]}</button>`).join('')}</div>`;
       f.textContent = ''; f.className = 'feedback';
     };
     box.addEventListener('click', async (e) => {
