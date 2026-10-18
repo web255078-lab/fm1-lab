@@ -1,6 +1,7 @@
 // 第16章 卒業制作（下書き。build_drafts.py で作成）
 import { createChapter, $, $$, sleep } from './core/lesson.js';
 import * as input from './core/input.js';
+import { shuffle } from './core/notes.js';
 import { read, write } from './core/store.js';
 
 const ch = createChapter({

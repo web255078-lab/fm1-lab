@@ -1,6 +1,7 @@
 // 第15章 外とつなぐ（下書き。build_drafts.py で作成）
 import { createChapter, $, $$, sleep } from './core/lesson.js';
 import * as input from './core/input.js';
+import { shuffle } from './core/notes.js';
 import * as audioin from './core/audioin.js';
 
 const ch = createChapter({

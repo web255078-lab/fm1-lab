@@ -11,7 +11,7 @@ import { progress, setTaskAliases, settings } from './store.js';
 import { TASK_ALIASES } from './chapters.js';
 
 setTaskAliases(TASK_ALIASES);
-import { label } from './notes.js';
+import { label, shuffle } from './notes.js';
 
 export const $ = (s, r = document) => r.querySelector(s);
 export const $$ = (s, r = document) => [...r.querySelectorAll(s)];
@@ -89,26 +89,38 @@ export function createChapter(o) {
       }
     });
   }
-  // たたむ：窓あり＝窓 → 鍵盤も → 元に戻す ／ 窓なし＝鍵盤 → 元に戻す。状態はページをまたいで覚える
+  // たたむ：「窓をたたむ」と「鍵盤をたたむ」を別々に覚える（どの章に移っても同じ意味になるように）
+  //   窓あり：全部出す → 窓だけたたむ → 鍵盤もたたむ → 全部出す
+  //   窓なし：全部出す → 鍵盤をたたむ → 全部出す
   const foldBtn = $('[data-fold]', dock);
-  const LABEL = o.scope === false ? ['鍵盤をたたむ', 'ひらく'] : ['たたむ', '鍵盤もたたむ', 'ひらく'];
-  const applyFold = (state) => {
-    const max = LABEL.length - 1;
-    state = Math.min(state, max);
-    dock.classList.toggle('folded', o.scope !== false && state >= 1);
-    dock.classList.toggle('mini', state === max && state > 0);
-    foldBtn.textContent = LABEL[state];
-    foldBtn.dataset.state = state;
+  const readFold = () => {
+    const f = settings.get().dockFold;
+    return f && typeof f === 'object' ? { scope: !!f.scope, keys: !!f.keys } : { scope: false, keys: false };
+  };
+  const applyFold = ({ scope, keys }) => {
+    const hasScope = o.scope !== false;
+    dock.classList.toggle('folded', hasScope && (scope || keys));
+    dock.classList.toggle('mini', keys);
+    foldBtn.textContent = keys ? 'ひらく' : hasScope ? (scope ? '鍵盤もたたむ' : 'たたむ') : '鍵盤をたたむ';
   };
   foldBtn.addEventListener('click', () => {
-    const next = (Number(foldBtn.dataset.state || 0) + 1) % LABEL.length;
-    applyFold(next);
+    const f = readFold();
+    let next;
+    if (o.scope === false) next = { scope: f.scope, keys: !f.keys };
+    else if (f.keys) next = { scope: false, keys: false };
+    else if (f.scope) next = { scope: true, keys: true };
+    else next = { scope: true, keys: false };
     settings.set({ dockFold: next });
+    applyFold(next);
   });
-  applyFold(settings.get().dockFold || 0);
-  // 課題やガイドで鍵盤を使うときは、たたんでいても鍵盤を出す
-  const unfoldKeys = () => { if (dock.classList.contains('mini')) applyFold(o.scope === false ? 0 : 1); };
+  applyFold(readFold());
+  // 課題やガイドで鍵盤を使うときは、たたんでいても鍵盤を出す（覚えた設定は変えない）
+  const unfoldKeys = () => { if (dock.classList.contains('mini')) applyFold({ ...readFold(), keys: false }); };
   window.addEventListener('fm1lab:needkeys', unfoldKeys);
+  document.addEventListener('click', (e) => { if (e.target.closest('[data-start]')) unfoldKeys(); });
+  const needObs = new IntersectionObserver((es) => es.forEach((x) => x.isIntersecting && unfoldKeys()), { threshold: 0.4 });
+  $$('[data-needkeys]').forEach((el) => needObs.observe(el));
+  $$('.feedback').forEach((f) => f.setAttribute('aria-live', 'polite'));
 
   const setScopeHidden = (v) => {
     scopeHidden = v;
@@ -311,7 +323,7 @@ export function createChapter(o) {
     const ask = () => {
       const q = questions[order[i]];
       st.textContent = `${i + 1} / ${order.length}`;
-      shown = q.options.map((_, k) => k).sort(() => Math.random() - 0.5);
+      shown = shuffle(q.options.map((_, k) => k));
       box.innerHTML = `<p class="quiz-q quiz-q-sm">${q.q}</p><div class="btn-row">${shown.map((k) => `<button class="chip" data-k="${k}">${q.options[k]}</button>`).join('')}</div>`;
       f.textContent = ''; f.className = 'feedback';
     };
@@ -336,7 +348,7 @@ export function createChapter(o) {
       else { f.textContent = `${order.length}問中${correct}問。${need}問でクリア。もう一度`; f.className = 'feedback ng'; }
     });
     start.addEventListener('click', () => {
-      order = questions.map((_, k) => k).sort(() => Math.random() - 0.5);
+      order = shuffle(questions.map((_, k) => k));
       i = 0; correct = 0; marks = [];
       draw();
       ask();

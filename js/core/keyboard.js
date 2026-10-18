@@ -74,7 +74,7 @@ export class Keyboard {
         ? `left:calc(${whites.filter((w) => w < n).length * wPct}% - ${wPct * 0.32}%);width:${wPct * 0.64}%`
         : `width:${wPct}%`;
       const isC = n % 12 === 0;
-      html += `<div class="${cls}" data-note="${n}" style="${style}" aria-label="${nameEn(n)}">
+      html += `<div class="${cls}" data-note="${n}" style="${style}" role="button" aria-label="${nameEn(n)}">
         ${pc ? `<span class="pc">${pc}</span>` : ''}
         ${name ? `<span class="nm">${name}${isC ? `<small>${nameEn(n)}</small>` : ''}</span>` : ''}
       </div>`;

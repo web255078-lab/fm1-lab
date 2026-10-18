@@ -341,3 +341,8 @@ svg.flow text.sub { fill: var(--muted); font-size: 11px; font-weight: 400; }
 .dock-grid.no-scope .scope-tabs { align-items: center; }
 .dock.mini [data-kb] { display: none; }
 .dock.mini .dock-grid.no-scope [data-readout] { display: block; }
+
+.task .dots i { color: #fff; font-size: 9px; line-height: 12px; text-align: center; font-style: normal; }
+.task .dots i.ok::after { content: "✓"; }
+.task .dots i.ng::after { content: "✗"; }
+.break-card { text-align: center; border-style: dashed; }

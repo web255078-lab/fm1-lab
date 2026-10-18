@@ -17,7 +17,7 @@ export const CHAPTERS = [
   { id: 'ch02', no: 2, part: 1, title: '鍵盤の地図', min: 30, ready: true },
   { id: 'ch03', no: 3, part: 1, title: 'リズムとテンポ', min: 30, ready: true },
   { id: 'ch04', no: 4, part: 1, title: 'スケールとコード', min: 45, ready: true },
-  { id: 'ch05', no: 5, part: 1, title: 'シンセの仕組み（エフェクトとミックスまで）', min: 65, ready: true },
+  { id: 'ch05', no: 5, part: 1, title: 'シンセの仕組み（前半45分・後半20分）', min: 65, ready: true },
   { id: 'ch06', no: 6, part: 2, title: '開封と準備', min: 20, ready: true, draft: true },
   { id: 'ch07', no: 7, part: 2, title: 'パネル一周ツアー', min: 40, ready: true, draft: true },
   { id: 'ch08', no: 8, part: 2, title: 'FM音源入門', min: 60, ready: true, draft: true },

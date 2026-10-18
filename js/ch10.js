@@ -1,6 +1,7 @@
 // 第10章 1ループ完成（下書き。build_drafts.py で作成）
 import { createChapter, $, $$, sleep } from './core/lesson.js';
 import * as input from './core/input.js';
+import { shuffle } from './core/notes.js';
 import { synth } from './core/synth.js';
 import { label } from './core/notes.js';
 

@@ -1,6 +1,7 @@
 // 第9章 自分の音を作って保存（下書き。build_drafts.py で作成）
 import { createChapter, $, $$, sleep } from './core/lesson.js';
 import * as input from './core/input.js';
+import { shuffle } from './core/notes.js';
 
 const ch = createChapter({
   id: 'ch09',

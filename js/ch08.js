@@ -1,6 +1,7 @@
 // 第8章 FM音源入門（下書き。build_drafts.py で作成）
 import { createChapter, $, $$, sleep } from './core/lesson.js';
 import * as input from './core/input.js';
+import { shuffle } from './core/notes.js';
 import { fm, fmOn, fmOff, fmUpdate } from './core/fmdemo.js';
 import { synth } from './core/synth.js';
 
@@ -72,7 +73,7 @@ $('#fmIndex').addEventListener('change', () => { if (input.heldNotes().length &&
   }));
   start.addEventListener('click', () => {
     const qs = [{ ratio: 1, kind: 'int' }, { ratio: 2, kind: 'int' }, { ratio: 3, kind: 'int' }, { ratio: 1.41, kind: 'odd' }, { ratio: 3.14, kind: 'odd' }, { ratio: 2.76, kind: 'odd' }];
-    order = qs.sort(() => Math.random() - 0.5);
+    order = shuffle(qs);
     i = 0; correct = 0; marks = [];
     draw();
     ask();
