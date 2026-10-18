@@ -104,7 +104,8 @@ export function createChapter(o) {
     foldBtn.textContent = keys ? 'ひらく' : hasScope ? (scope ? '鍵盤もたたむ' : 'たたむ') : '鍵盤をたたむ';
   };
   foldBtn.addEventListener('click', () => {
-    const f = readFold();
+    // 窓なしの章では窓の状態は変えない（覚えている値をそのまま使う）
+    const f = { scope: o.scope === false ? readFold().scope : dock.classList.contains('folded'), keys: dock.classList.contains('mini') };
     let next;
     if (o.scope === false) next = { scope: f.scope, keys: !f.keys };
     else if (f.keys) next = { scope: false, keys: false };
@@ -118,7 +119,11 @@ export function createChapter(o) {
   const unfoldKeys = () => { if (dock.classList.contains('mini')) applyFold({ ...readFold(), keys: false }); };
   window.addEventListener('fm1lab:needkeys', unfoldKeys);
   document.addEventListener('click', (e) => { if (e.target.closest('[data-start]')) unfoldKeys(); });
-  const needObs = new IntersectionObserver((es) => es.forEach((x) => x.isIntersecting && unfoldKeys()), { threshold: 0.4 });
+  const needObs = new IntersectionObserver((es) => es.forEach((x) => {
+    if (!x.isIntersecting) return;
+    unfoldKeys();
+    needObs.unobserve(x.target);
+  }), { threshold: 0.4 });
   $$('[data-needkeys]').forEach((el) => needObs.observe(el));
   $$('.feedback').forEach((f) => f.setAttribute('aria-live', 'polite'));
 

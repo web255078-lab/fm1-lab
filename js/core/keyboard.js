@@ -18,7 +18,7 @@ export class Keyboard {
         ${latch ? '<button type="button" class="kb-latch" aria-pressed="false" title="マウスや1本指でも和音を押さえられる">和音モード</button>' : ''}
         <button type="button" class="kb-oct" data-d="1" aria-label="1オクターブ上">高く ▶</button>
       </div>
-      <div class="kb" role="group" aria-label="画面の鍵盤"></div>`;
+      <div class="kb" role="group" aria-label="画面の鍵盤（PC のキーボードの A S D F… と W E T Y U でも弾けます）"></div>`;
     this.kb = el.querySelector('.kb');
     this.info = el.querySelector('.kb-info');
     el.querySelectorAll('.kb-oct').forEach((b) =>
@@ -74,7 +74,7 @@ export class Keyboard {
         ? `left:calc(${whites.filter((w) => w < n).length * wPct}% - ${wPct * 0.32}%);width:${wPct * 0.64}%`
         : `width:${wPct}%`;
       const isC = n % 12 === 0;
-      html += `<div class="${cls}" data-note="${n}" style="${style}" role="button" aria-label="${nameEn(n)}">
+      html += `<div class="${cls}" data-note="${n}" style="${style}" role="button" tabindex="-1" aria-label="${nameEn(n)}">
         ${pc ? `<span class="pc">${pc}</span>` : ''}
         ${name ? `<span class="nm">${name}${isC ? `<small>${nameEn(n)}</small>` : ''}</span>` : ''}
       </div>`;
