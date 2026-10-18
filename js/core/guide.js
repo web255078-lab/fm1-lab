@@ -11,6 +11,7 @@ const lit = new Set();
 
 export function show(keyboard, notes, cls = 'guide') {
   const list = [].concat(notes);
+  window.dispatchEvent(new CustomEvent('fm1lab:needkeys'));
   if (keyboard) {
     list.forEach((n) => keyboard.reveal(n));
     keyboard.mark(list, cls);

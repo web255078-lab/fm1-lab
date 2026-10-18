@@ -337,3 +337,7 @@ svg.flow text.sub { fill: var(--muted); font-size: 11px; font-weight: 400; }
   .pill { padding: 4px 9px; font-size: 0.78rem; }
   .pill.toggle { font-size: 0.74rem; }
 }
+
+.dock-grid.no-scope .scope-tabs { align-items: center; }
+.dock.mini [data-kb] { display: none; }
+.dock.mini .dock-grid.no-scope [data-readout] { display: block; }

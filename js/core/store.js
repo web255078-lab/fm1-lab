@@ -51,6 +51,7 @@ const DEFAULT_SETTINGS = {
   ledVelocity: 1,         // 光らせるときの強さ（小さいほど音が目立たない…はず。要実機確認）
   baseOctave: 4,          // 画面鍵盤の左端のオクターブ
   tapOffset: 0,           // リズム判定の補正（ms）。スピーカーや機器の遅れを差し引く
+  dockFold: 0,            // 画面下の鍵盤のたたみ具合（0=全部出す）
 };
 
 export const settings = {

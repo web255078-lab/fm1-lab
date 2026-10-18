@@ -7,7 +7,7 @@ import { nextNote } from './judge.js';
 import { Keyboard } from './keyboard.js';
 import { Scope } from './scope.js';
 import { synth } from './synth.js';
-import { progress, setTaskAliases } from './store.js';
+import { progress, setTaskAliases, settings } from './store.js';
 import { TASK_ALIASES } from './chapters.js';
 
 setTaskAliases(TASK_ALIASES);
@@ -54,7 +54,7 @@ export function createChapter(o) {
   // ---------- 画面下のドック ----------
   const dock = $('#dock');
   dock.innerHTML = `<div class="dock-grid${o.scope === false ? ' no-scope' : ''}">
-    ${o.scope === false ? '<div class="readout" data-readout></div>' : DOCK_SCOPE}
+    ${o.scope === false ? '<div class="scope-tabs"><div class="readout" data-readout></div><span style="flex:1"></span><button class="chip" data-fold title="鍵盤をたたんで本文を広く">鍵盤をたたむ</button></div>' : DOCK_SCOPE}
     <div data-kb></div></div>`;
   const kb = new Keyboard($('[data-kb]', dock), o.keyboard || {});
 
@@ -69,13 +69,7 @@ export function createChapter(o) {
       $$('[data-mode]', dock).forEach((c) => c.classList.toggle('sel', c === b));
       scope.mode = b.dataset.mode;
     }));
-    // たたむ：1回目＝窓をたたむ、2回目＝鍵盤もたたむ（本文を広く）、3回目＝元に戻す
-    $('[data-fold]', dock).addEventListener('click', (e) => {
-      const state = dock.classList.contains('mini') ? 0 : dock.classList.contains('folded') ? 2 : 1;
-      dock.classList.toggle('folded', state >= 1);
-      dock.classList.toggle('mini', state === 2);
-      e.target.textContent = state === 0 ? 'たたむ' : state === 1 ? '鍵盤もたたむ' : 'ひらく';
-    });
+
     const src = $('[data-src]', dock);
     src.addEventListener('change', async () => {
       if (src.value === 'usb') {
@@ -95,6 +89,27 @@ export function createChapter(o) {
       }
     });
   }
+  // たたむ：窓あり＝窓 → 鍵盤も → 元に戻す ／ 窓なし＝鍵盤 → 元に戻す。状態はページをまたいで覚える
+  const foldBtn = $('[data-fold]', dock);
+  const LABEL = o.scope === false ? ['鍵盤をたたむ', 'ひらく'] : ['たたむ', '鍵盤もたたむ', 'ひらく'];
+  const applyFold = (state) => {
+    const max = LABEL.length - 1;
+    state = Math.min(state, max);
+    dock.classList.toggle('folded', o.scope !== false && state >= 1);
+    dock.classList.toggle('mini', state === max && state > 0);
+    foldBtn.textContent = LABEL[state];
+    foldBtn.dataset.state = state;
+  };
+  foldBtn.addEventListener('click', () => {
+    const next = (Number(foldBtn.dataset.state || 0) + 1) % LABEL.length;
+    applyFold(next);
+    settings.set({ dockFold: next });
+  });
+  applyFold(settings.get().dockFold || 0);
+  // 課題やガイドで鍵盤を使うときは、たたんでいても鍵盤を出す
+  const unfoldKeys = () => { if (dock.classList.contains('mini')) applyFold(o.scope === false ? 0 : 1); };
+  window.addEventListener('fm1lab:needkeys', unfoldKeys);
+
   const setScopeHidden = (v) => {
     scopeHidden = v;
     const h = $('[data-scope-hide]', dock);
@@ -234,6 +249,7 @@ export function createChapter(o) {
       },
     };
     if (startBtn) startBtn.textContent = 'やめる';
+    unfoldKeys();
     synth.start().then(() => run(ctx)).catch((e) => {
       console.error(e);
       u.fb(`エラー：${e.message}`, 'ng');
