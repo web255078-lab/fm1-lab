@@ -1,0 +1,151 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第12章 Feluccaで4トラック作曲 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第3部 ファームで遊び尽くす ・ 第12章 ・ 約80分</div>
+    <h1>Feluccaで4トラック作曲</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p><a href="https://hugelton.github.io/Felucca/" target="_blank" rel="noopener">Felucca</a> は、FM-1 を<strong>4トラックの作曲マシン</strong>にするファームです。ドラム・ベース・コード・メロディを別々のトラックに作り、重ねて1曲にします。多くの有志ファームの土台にもなっています。</p><div class="caution">入れる前に第11章のチェックリストを。Felucca の README によると、純正に戻すには M-VAVE の更新ツールか、インストーラーの「Return to official V15」を使います。</div>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">12-1</div>
+    <h2>トラックとページ</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>Felucca を入れたら、<strong>ALGORITHM</strong> を回してトラック（1〜4）を選びます。上の段のボタンを押すとそのページへ、もう一度押すと次のページへ。<strong>HOME</strong> で戻ります。<strong>HOME を長押し</strong>するとメニューが開きます。</p><div class="check-hw">トラックごとの音源（エンジン）の選び方の詳しい操作は、README には書かれていません。実機の画面で確かめてください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>どのページにいても、ALGORITHM で「いま触るトラック」を選ぶのが基本です。HOME のボタンは押すたびに HOME → MIXER → CLOCK と切り替わり、CLOCK でテンポ（BPM）やスウィングを決めます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>1つの楽器パートを<span class="term">トラック</span>、トラックごとの音の作り方の種類を<span class="term">エンジン</span>と呼びます。Felucca には FM・ドラムなど13種類以上のエンジンがあります。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">12-2</div>
+    <h2>ドラムは「ランダム → 手直し」</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>トラック1のエンジンを <strong>DRUM</strong> にします。ドラムの画面では、<strong>白鍵がマス（ステップ）</strong>、<strong>黒鍵が楽器</strong>（KICK・SNARE・CLAP・ハットなど8種）です。</p><p>まずは自分で組まずに、<strong>SEQ を長押し</strong>して SEQ TOOLS の <strong>RANDOM</strong> を選び、気に入るまで何度か作り直してください。少しだけ変えたいときは <strong>COOK</strong>。最後に、キックだけ白鍵で直してみましょう。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>ゼロから打ち込まなくても、ランダムで「それっぽいビート」がすぐできました。気に入るまで作り直し、最後に気になる所だけ手で直す。初心者でも速く進められるやり方です。失敗したら <strong>SAVE を長押し</strong>で1つ前に戻せます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>機械にランダムで作らせることを<span class="term">ジェネレート</span>（生成）といいます。人が全部決めるのでも、全部任せるのでもなく、<strong>選んで直す</strong>のが作曲の大事な力です（第13章につながります）。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">12-3</div>
+    <h2>外れない鍵盤でベースとコード</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>トラック2をベース向きの音にして、<strong>SCL</strong> のページで <strong>QNT</strong> を WHITE、<strong>ROOT</strong>（ルート）と <strong>SCALE</strong> を選びます。これで<strong>白鍵だけ</strong>でスケールの音が弾けます。</p><p>録るときは、MENU（HOME 長押し）→ AUDIO で <strong>COUNT-IN</strong> を1小節に、<strong>CLICK</strong>（メトロノーム）を ON。トラックを <strong>REC</strong> で録音待ちにして <strong>PLAY</strong>。重ね録りもできます。</p><p>トラック3は SCL をもう一度押した <strong>CHORD</strong> のページで、1つの鍵盤で和音が鳴るようにしてみましょう。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>白鍵だけを弾けば外れない、という第5章（コアラ・ラボ）・第4章（FM-1ラボ）の考え方が、そのまま実機の機能になっていました。数え始めがあるので、1拍目から録れます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>弾いた音をスケールに寄せる機能を<span class="term">スケールクオンタイズ</span>、1つの鍵盤で和音を鳴らすのが<span class="term">コードキー</span>です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">12-4</div>
+    <h2>エフェクトとミックス</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><strong>FX</strong> のページで、トラックのエフェクト（INSERT）と、響きなどに送る量（SEND）を調整します。<strong>HOME</strong> の MIXER ページで、トラックの音量バランスを整えましょう。</p><div class="check-hw">トラックの左右（パン）を決めるつまみの場所は、README に書かれていません。第5章 5-7 のミックスの考え方で、実機の MIXER を探してください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>第5章 5-6・5-7 でブラウザでやったことが、4トラックの実機でできました。ドラムとベースは真ん中、コードやメロディは少し左右に、響きは控えめに。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>トラックに直接かける<span class="term">インサート</span>と、みんなで共有する響きへ送る<span class="term">センド</span>。どちらも第5章の言葉です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l5" data-try="try5">
+    <div class="num">12-5</div>
+    <h2>保存する</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>再生を<strong>止めてから</strong>、<strong>SAVE</strong> を押し、KNOB 1 で保存先を選んで <strong>OCT+ を2回</strong>。曲全体はプロジェクトとして A〜D の枠に保存できます（README より）。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>音色や曲が FM-1 の中に保存されました。ファームを入れ替える前には、第11章のバックアップを忘れずに。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>トラック・音色・パターンをまとめた作業全体を<span class="term">プロジェクト</span>と呼びます。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="quiz">
+      <h3>Felucca クイズ</h3>
+      <p>6問中5問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <div data-quiz></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+    <div class="task" data-task="check">
+      <h3>4トラックの曲チェック</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="drum"> トラック1：ランダムで作って手直ししたドラム</label></li>
+        <li><label><input type="checkbox" data-item="bass"> トラック2：スケールを使ったベース</label></li>
+        <li><label><input type="checkbox" data-item="chord"> トラック3：コード（コードキーでも）</label></li>
+        <li><label><input type="checkbox" data-item="melo"> トラック4：メロディか上もの</label></li>
+        <li><label><input type="checkbox" data-item="mix"> エフェクトと音量バランスを整えた</label></li>
+        <li><label><input type="checkbox" data-item="save"> プロジェクトを保存した</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card"><h2>コラム：Melodee</h2><p><a href="https://keremimo.github.io/melodee/" target="_blank" rel="noopener">Melodee</a> は Felucca から派生したファームで、ステージ用の画面や、CZ-1・Prophet などのエンジン、専用のエディターがあります。インストーラーは先にバックアップを取る仕組みです。ただし一覧ページには「以前の Melodee や V15 からの上書き中に途切れたときの備えはまだない」と注意書きがあります。Felucca に慣れてから試すのがおすすめです。</p></section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch13.html"><strong>第13章 楽器を乗り換える</strong></a>。</p>
+    <p class="src">出典：Felucca の README（github.com/Marcel-B/Felucca）</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch12.js"></script>
+</body>
+</html>

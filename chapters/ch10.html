@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第10章 1ループ完成 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第2部 実機で弾く ・ 第10章 ・ 約60分</div>
+    <h1>1ループ完成（純正のエフェクトで仕上げ）</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>第2部のまとめです。FM-1 の<strong>シーケンサー</strong>に音を並べて自動で演奏させ、アルペジエーターやエフェクトで仕上げて、<strong>くり返し聞いていられる1ループ</strong>を完成させます。</p>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">10-1</div>
+    <h2>1マスずつ録る</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><strong>ブラウザで練習：</strong>下の16マスは、FM-1 のシーケンサーと同じ録り方です。鍵盤を弾くたびに、<strong>次のマスに1つずつ</strong>音が入ります（画面の鍵盤でも、実機でもOK）。8マス以上入れて▶で聞いてください。</p><div id="stepRec" class="step-rec"></div><div class="btn-row"><button class="btn sub" id="srPlay">▶ 流す</button><button class="btn sub" id="srClear">全部消す</button><label>速さ <input type="range" id="srBpm" min="60" max="160" value="110"></label><b id="srBpmVal">110</b></div><p><strong>FM-1 で：</strong><strong>SEQ</strong> を押すと鍵盤が16マスの表示に変わります。<strong>REC</strong> を押して鍵盤を弾くと、1音ずつ次のマスに入ります。もう一度 REC で録音終了、<strong>PLAY/STOP</strong> で再生・停止です。</p><p class="feedback" data-fb="try1"></p>
+      
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>弾いた順に、マスが左から埋まっていきました。リズムは「マスの位置」で決まるので、ゆっくり弾いてもズレません。再生中は、いま鳴っているマスの LED が点滅します（実機）。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>1マスずつ入れる録り方を<span class="term">ステップ録音</span>、マスを<span class="term">ステップ</span>といいます。FM-1 は16ステップで、パターンを16個まで持てます（SEQ の KNOB 1 で選ぶ、説明書より）。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">10-2</div>
+    <h2>速さ・長さ・はね</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>SEQ の画面で、1ページ目の KNOB 4 が<strong>テンポ（30〜300）</strong>、KNOB 3 が <strong>Rate</strong>。2ページ目の KNOB 1 が <strong>Gate（音の長さ 20〜100%）</strong>、KNOB 2 が <strong>Swing（50〜75%）</strong>です。再生しながら回してみてください。KNOB 2（1ページ目）は Clear（消す）なので注意。</p><div class="check-hw">Rate の値で1マスの長さ（16分音符・8分音符など）がどう変わるかは、説明書に書かれていません。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>テンポで全体の速さ、Gate で1音の長さ（短いとポツポツ、長いとつながる）、Swing ではね具合が変わりました。Swing は50%でまっすぐです。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p><span class="term">ゲート</span>は「音を鳴らしている長さの割合」。第3章のテンポ・第4章（コアラ・ラボ）のスウィングと同じ考え方です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">10-3</div>
+    <h2>自動でパラパラ</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>SEQ を止めて（SEQ をもう一度押す）、<strong>ARP</strong> を押します。和音を押さえると、自動でパラパラと弾いてくれます。KNOB 1 で並び方（Up・Down・Random など）、KNOB 2 でオクターブの幅、KNOB 4 でテンポ。2ページ目の <strong>Latch</strong> を ON にすると、指を離しても続きます。</p><div class="caution">ARP と SEQ は同時には使えません（説明書より）。片方を止めてから入ります。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>押さえた和音の音が、1つずつ順番に鳴りました。Latch を入れると、押さえた和音がずっと回り続けるので、両手で別のことができます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>和音をばらして順に弾くことを<span class="term">アルペジオ</span>、それを自動でやる機能が<span class="term">アルペジエーター</span>です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">10-4</div>
+    <h2>エフェクトで仕上げる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>シーケンスを再生したまま、<strong>FX</strong> で <strong>Reverb（響き）</strong>と <strong>Delay（こだま）</strong>を ON にして、少しずつ量（Mix）を上げてください。気に入ったら <strong>SAVE 長押し</strong>で保存。</p><div class="check-hw">SEQ の再生中に FX の画面に切り替えても、再生が止まらないかは実機で確かめてください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>同じループでも、響きとこだまで空間が広がり、「作品」らしくなりました。かけすぎると輪郭がぼやけるので、少し物足りないくらいがちょうどいいです（第5章 5-6）。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>最後に全体を整える作業を<span class="term">仕上げ</span>（ミックスやマスタリングの入り口）と呼びます。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="phrase">
+      <h3>課題 10-1　お手本のフレーズをステップ録音</h3>
+      <p>8つの音のフレーズが鳴ります。上の16マスに、<strong>同じ順番</strong>で1音ずつ入れてください（鍵盤で弾くだけ。マスは自動で進みます）。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button><button class="btn sub" data-replay disabled>もう一度聞く</button></div>
+    </div>
+    <div class="task" data-task="check">
+      <h3>1ループ完成チェック</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="seq"> FM-1 の SEQ で、8ステップ以上のフレーズをステップ録音した</label></li>
+        <li><label><input type="checkbox" data-item="tempo"> テンポ・Gate・Swing を好みに調整した</label></li>
+        <li><label><input type="checkbox" data-item="arp"> ARP（Latch）を試した</label></li>
+        <li><label><input type="checkbox" data-item="fx"> Reverb か Delay で仕上げた</label></li>
+        <li><label><input type="checkbox" data-item="save"> SAVE で保存した</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch11.html"><strong>第11章 ファーム入れ替えの基本と安全</strong></a>。</p>
+    <p class="src">出典：M-VAVE FM-1 取扱説明書（英語版）</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch10.js"></script>
+</body>
+</html>

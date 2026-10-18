@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第9章 自分の音を作って保存 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第2部 実機で弾く ・ 第9章 ・ 約40分</div>
+    <h1>自分の音を作って保存</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>FM-1 の EDIT は奥が深いので、最初から全部いじる必要はありません。この章では、<strong>気に入ったプリセットを土台に</strong>、エンベロープ・LFO・エフェクトの3つで自分の音にして、<strong>保存</strong>するところまでやります。</p><div class="caution"><strong>保存は「いま選んでいる番号」に上書きされます</strong>（説明書の書き方から）。そして PRESETS を回すと、すぐ別の音が読み込まれます。なので、<strong>先に保存先にしたい番号のプリセットを選んでから</strong>音を作り始めてください。消えてもいい番号（たとえば 120〜128）を自分用にするのがおすすめです。</div>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">9-1</div>
+    <h2>音の時間の形を変える</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>自分用の番号のプリセットを選び、<strong>ENV</strong> を押します。KNOB 1〜4 が <strong>Attack・Decay・Sustain・Release</strong>（それぞれ 0〜8）です。第5章と同じように、ふわっと始まる音、すぐ消える音を作ってみてください。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>第5章のブラウザのシンセとまったく同じ考え方で、FM-1 の音の時間の形が変わりました。画面では、値がブロックの棒グラフで表示されます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>ENV の画面は、6つのオペレーターのエンベロープをまとめて動かす<span class="term">かんたん調整</span>です。オペレーターごとの細かい形は、EDIT の Rate・Level で決めます。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">9-2</div>
+    <h2>揺らす</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><strong>LFO</strong> を押します。1ページ目の KNOB 1 が揺れの形（三角・ノコギリ・四角・サイン・ランダム）、KNOB 2 が速さ、KNOB 3 が<strong>高さの揺れ（PMD）</strong>、KNOB 4 が<strong>大きさの揺れ（AMD）</strong>です。</p><div class="check-hw">揺れの効き具合は、2ページ目の Pitch Sens（高さへの効き）や、EDIT の各オペレーターの設定でも変わります。PMD を上げても揺れないときは Pitch Sens を上げてみてください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>PMD でビブラート、AMD でトレモロがかかりました。第5章の「揺らす先」が、FM-1 では2つのつまみに分かれています。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p><span class="term">PMD</span> はピッチ・モジュレーション・デプス（高さの揺れの深さ）、<span class="term">AMD</span> はアンプリチュード・モジュレーション・デプス（大きさの揺れの深さ）です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">9-3</div>
+    <h2>エフェクトを並べる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><strong>FX</strong> を押すと、6つのエフェクトが 3×2 のマス目で出ます。SELECT で選び、KNOB 1〜3 で調整、<strong>KNOB 4 を右に回すと ON</strong>、左で OFF です。<strong>SEL</strong> を押してから SELECT を回すと、順番を入れ替えられます。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>Filter（フィルター）・Reverb（響き）・Delay（こだま）・Distortion（歪み）・Chorus（ゆらぎ）・Phaser（うねり）の6つが、マス目の順に音にかかります。明るいマスが ON、暗いマスが OFF です。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>エフェクトを順番につないだものを<span class="term">エフェクトチェーン</span>といいます。順番で音が変わります。たとえば「歪み → 響き」と「響き → 歪み」では、響きまで歪むかどうかが違います。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">9-4</div>
+    <h2>保存する</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>できた音は、<strong>SAVE を長押し</strong>すると保存されます。SAVE の LED が光り、画面に Preset Saved と出ます。保存したら、PRESETS で別の音にしてから戻ってきて、ちゃんと残っているか確かめてください。</p><div class="caution">GLO の2ページ目にある <strong>Reset Patches</strong> は、128個全部を工場出荷の状態に戻します（説明書より）。自分の音も消えるので、押すときは注意。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>別の音から戻ってきても、作った音が残っていました。説明書によると、SAVE ではエフェクトやシーケンサーのパターン、全体の設定なども一緒に保存されます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>本体の電源を切っても消えない記憶を<span class="term">フラッシュメモリー</span>といいます。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="quiz">
+      <h3>保存クイズ</h3>
+      <p>5問中4問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <div data-quiz></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+    <div class="task" data-task="check">
+      <h3>自分の音ができたかチェック</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="slot"> 自分用のプリセット番号を決めて、メモした</label></li>
+        <li><label><input type="checkbox" data-item="env"> ENV で音の時間の形を変えた</label></li>
+        <li><label><input type="checkbox" data-item="lfo"> LFO で揺らした（PMD か AMD）</label></li>
+        <li><label><input type="checkbox" data-item="fx"> エフェクトを1つ以上 ON にして調整した</label></li>
+        <li><label><input type="checkbox" data-item="save"> SAVE を長押しして保存し、別の音から戻っても残っているのを確かめた</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch10.html"><strong>第10章 1ループ完成</strong></a>。</p>
+    <p class="src">出典：M-VAVE FM-1 取扱説明書（英語版）</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch09.js"></script>
+</body>
+</html>

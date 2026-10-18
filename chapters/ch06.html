@@ -1,0 +1,131 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第6章 開封と準備 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第2部 実機で弾く ・ 第6章 ・ 約20分</div>
+    <h1>開封と準備</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>FM-1 が届いたら、まずは<strong>電源を入れて、音を出して、ブラウザとつなぐ</strong>ところまで。ここまでできれば、第1部の課題も実機の鍵盤で遊べるようになります。</p>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">6-1</div>
+    <h2>電源を入れる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>本体の<strong>うしろ</strong>にある電源スイッチを入れてください。画面がついたら、<strong>右上の電池のマーク</strong>を見ます。</p><div class="check-hw">充電中の表示（ランプや画面の印）があるかは、取扱説明書に書かれていません。USB-C で PC や充電器につないで確かめてください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>画面には、上に「いまの音の番号と名前」、まん中に音の波形、下に「いまのモードとページ」が出ています。電池の残りは右上のマークで分かります。</p><p>説明書によると、電池がほとんどなくなると画面いっぱいに LOW BATTERY と出て、充電するまで消えません。電池で約12時間、USB からの電気でも動きます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>画面いちばん上の「番号と名前」は<span class="term">プリセット</span>（音のセット）の表示です。FM-1 には 001〜128 の128個が入っています。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">6-2</div>
+    <h2>音を出す</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>鍵盤をいくつか弾いて、左上の <strong>MASTER</strong> のつまみで音量を変えてみてください。イヤホンを挿して、スピーカーの音が消えることも確かめます。</p><div class="caution">説明書は、イヤホンは<strong>ふつうの3極（TRS）のプラグ</strong>をすすめています。ほかの形だと雑音が出たり、スピーカーが消えなかったりすることがあるそうです。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>MASTER は音量のつまみで、右に回すと大きくなります。イヤホンを挿すと内蔵スピーカーが自動で止まります。鍵盤は押すと LED が光ります。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>FM-1 の鍵盤は<span class="term">27鍵</span>のシリコン鍵盤。何も設定していないとき、いちばん左が F3、いちばん右が G5 です（説明書より）。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">6-3</div>
+    <h2>ブラウザとつなぐ</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>FM-1 を USB-C ケーブルで PC か Android につなぎ、この画面の上の「🎹 実機をつなぐ」を押して許可します。つながったら、<strong>FM-1 の鍵盤</strong>を弾いてください（この節は、弾いた音が届くと自動で開きます）。</p><p class="feedback" data-fb="try3"></p>
+      
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>FM-1 の鍵盤を弾くと、画面下の鍵盤も一緒に沈み、波形の窓が動きました。FM-1 は弾いた音の情報（どの鍵盤を、どれくらいの強さで）を USB で送っています。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>この「音の情報」のやりとりが<span class="term">MIDI</span>です。説明書によると、FM-1 は USB・Bluetooth・3.5mm の MIDI 入力の3つを同時に使えます。送るのは鍵盤・アルペジエーター・シーケンサーの音で、チャンネルは GLO の画面で決めます。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">6-4</div>
+    <h2>Bluetooth でもつながる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><strong>HOME</strong> を長押しすると Bluetooth の ON／OFF が切り替わります。HOME の LED が点滅＝つながる相手を待っている、点灯＝つながった、消灯＝OFF です。</p><div class="check-hw">Android の Chrome から Bluetooth の MIDI として FM-1 を使えるかは未確認です。まずは USB でつないでください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>ケーブルなしでも MIDI を飛ばせます。iPad の Koala Sampler など、Bluetooth MIDI に対応したアプリから FM-1 を鍵盤として使える可能性があります（第15章）。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>Bluetooth で送る MIDI を<span class="term">BLE MIDI</span>（ブルートゥース・ロー・エナジー MIDI）といいます。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="quiz">
+      <h3>準備クイズ</h3>
+      <p>5問中4問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <div data-quiz></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+    <div class="task" data-task="check">
+      <h3>接続診断で確かめる</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="diag"> <a href="../diag.html">接続診断</a>で「MIDI入力ポート名」が記録された</label></li>
+        <li><label><input type="checkbox" data-item="range"> 接続診断で、いちばん左といちばん右の鍵盤を弾いて「音の範囲」が記録された</label></li>
+        <li><label><input type="checkbox" data-item="vel"> 弱く・強く弾き分けて「強さの幅」が記録された</label></li>
+        <li><label><input type="checkbox" data-item="memo"> 「実機確認メモ」をコピーして、教材づくりの相談に貼った</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch07.html"><strong>第7章 パネル一周ツアー</strong></a>。</p>
+    <p class="src">出典：M-VAVE FM-1 取扱説明書（英語版）</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch06.js"></script>
+</body>
+</html>

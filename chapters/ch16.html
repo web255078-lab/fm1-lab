@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第16章 卒業制作 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第3部 ファームで遊び尽くす ・ 第16章 ・ 約30分</div>
+    <h1>卒業制作</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>最後の章です。ここまでの全部を使って、<strong>FM-1 で1曲</strong>作って、録音して、誰かに聞いてもらいます。ファームは自由（純正でも、Felucca でも、X0X でも）。</p>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">16-1</div>
+    <h2>設計する</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>作り始める前に、3つだけ決めてください。</p><ol><li>どのファームで作るか</li><li>テンポ（ゆっくり・ふつう・速い）</li><li>構成（例：イントロ → いつもの → ブレイク → サビ → アウトロ）</li></ol><p>コアラ・ラボの第6章の構成表を使ってもOKです。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>先に地図を作っておくと、迷ったときに戻る場所ができます。完璧でなくて大丈夫。作りながら変えていきましょう。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>作り始める前の設計を<span class="term">プリプロダクション</span>（プリプロ）と呼びます。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">16-2</div>
+    <h2>作って、録る</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>決めたファームで作ったら、第15章の録音機（または PC の録音アプリ）で、最初から最後まで通して録ります。</p><div class="check-hw">純正ファームで USB 録音ができない場合は、FM-1 のイヤホン端子から PC や録音機器につなぐか、Felucca など USB オーディオのあるファームで作ってください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>演奏をまるごと録ると、ちょっとしたミスも含めて「その日の演奏」になります。何回か録って、いちばん好きなものを選びましょう。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>何回か録ったそれぞれを<span class="term">テイク</span>といいます。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="final">
+      <h3>卒業制作チェック</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="len"> 1分以上の曲を作った</label></li>
+        <li><label><input type="checkbox" data-item="fm"> FM-1 の音（自分で作った音、またはファームの音）を使った</label></li>
+        <li><label><input type="checkbox" data-item="form"> 始まり・盛り上がり・終わりがある</label></li>
+        <li><label><input type="checkbox" data-item="fx"> エフェクトかミックスで仕上げた</label></li>
+        <li><label><input type="checkbox" data-item="rec"> 録音してファイルにした</label></li>
+        <li><label><input type="checkbox" data-item="share"> 誰かに聞いてもらった</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+    <div class="task" data-task="review">
+      <h3>ふり返りシート</h3>
+      <p>自分の曲を通して聞いてから。次の1曲のための記録です。</p>
+      <div class="review" id="review"></div>
+      <label class="memo">いちばんうまくいったこと<textarea id="rvGood" rows="2"></textarea></label>
+      <label class="memo">次の曲でやってみたいこと<textarea id="rvNext" rows="2"></textarea></label>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" id="reviewSave">記録する</button></div>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>これで FM-1 ラボは全部おしまいです。おつかれさまでした！</p>
+    <p class="src">出典：—</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch16.js"></script>
+</body>
+</html>

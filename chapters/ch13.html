@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第13章 楽器を乗り換える | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第3部 ファームで遊び尽くす ・ 第13章 ・ 約55分</div>
+    <h1>楽器を乗り換える（X0X で組む・MAKU と AMB-1 に任せる）</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>同じ FM-1 が、ファーム1つで「自分で組むリズムマシン」にも「勝手に鳴り続ける環境音楽の機械」にもなります。この章では正反対の2タイプを乗り換えて、<strong>組む楽しさ</strong>と<strong>任せて選ぶ楽しさ</strong>を比べます。</p>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">13-1</div>
+    <h2>X0X：909と808と303</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><a href="https://charlesvestal.github.io/fm1-x0x/" target="_blank" rel="noopener">X0X</a> は、名作リズムマシン909・808、ベースマシン303（2台）、ブレイクビーツを1台にしたファームです。入れたら、まず次のことをやってみてください（公式マニュアルの最初の手順をもとに、この教材向けにまとめています）。</p><ul><li><strong>黒鍵</strong>で楽器を選び、<strong>白鍵</strong>でマスを ON にする。キックを4つ打ち（1・5・9・13）に</li><li><strong>PLAY</strong> で再生。クラップを5と13に、開いたハットを3・7・11・15に</li><li><strong>ALGORITHM</strong> で 909 → 808 → 303A → 303B → BREAK とパートを切り替えられる</li></ul>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>コアラ・ラボ第4章の「4つ打ち」とまったく同じマスの並びで、本物のダンスビートになりました。X0X ではパターンを最大64ステップ（16ずつ OCT で切り替え）まで作れます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>909・808・303 は、どれも1980年代のローランドの機材の型番で、今でもダンス音楽の音の代名詞です。X0X はそれらを手本にした音を、この FM-1 の中で鳴らしています。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">13-2</div>
+    <h2>303のラインを生成する</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>ALGORITHM で <strong>303A</strong> を選び、<strong>ARP</strong> を押します。<strong>OCT+</strong> を押すたびに新しいベースラインが生まれ、<strong>OCT−</strong> でいまのラインを少しだけ変えられます。気に入るまで押してみてください。</p><p>そのあと <strong>EDIT</strong> を押して、KNOB 1（フィルターの明るさ）と KNOB 2（クセ）を回すと、あの「ビヨビヨ」した音になります。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>押すたびに違うフレーズが出てくるので、作曲の知識がなくても、かっこいいベースラインに出会えました。生成ページの DENS（音の数）・ACCENT・SLIDE で、次に生まれるラインの傾向を変えられます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>303 の独特の音は、フィルターのクセ（第5章のレゾナンス）を上げて動かすことで生まれます。このジャンルを<span class="term">アシッド</span>と呼びます。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">13-3</div>
+    <h2>MAKU：世界を作り直して、気に入ったら「いいね」</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><a href="https://okumurari2.github.io/maku/" target="_blank" rel="noopener">MAKU</a> は、電源を入れるたびに<strong>キーの合ったランダムな環境音楽</strong>がずっと鳴るファームです（README より）。</p><ul><li><strong>HOME を長押し</strong>：新しい「世界」に作り直す</li><li><strong>REC を軽く押す</strong>：いまの世界に「いいね」（16個まで）。いいねが増えるほど、新しい世界がいいねに寄っていく</li><li><strong>KNOB 1〜4</strong>：4つのパートの音量。回したパートが「いま触る」パートになる</li></ul><div class="caution">REC を<strong>2秒ほど長押し</strong>すると、いいねが全部消えます（README より）。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>何もしなくても音楽が流れ続け、自分の仕事は「聞いて、選ぶ」ことでした。いいねを重ねると、だんだん自分好みの世界が出やすくなります。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>ルールにしたがって機械が自動で作り続ける音楽を<span class="term">ジェネラティブ・ミュージック</span>（自動生成の音楽）といいます。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">13-4</div>
+    <h2>AMB-1：手入れする音楽</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><a href="https://charlesvestal.github.io/fm1-amb/" target="_blank" rel="noopener">AMB-1</a> も、電源を入れるとすぐ自分で鳴り始めるファームです。説明ページによると、ブライアン・イーノの『Music for Airports』に着想を得ていて、パッド・ベル・ベース・リズム・空間の5つの要素でできています。</p><ul><li><strong>鍵盤</strong>：スケールの音を、外したり戻したりする</li><li><strong>REC</strong>：いまの和音を止めて、響きだけ残す</li></ul><div class="check-hw">AMB-1 のほかのボタン・つまみの働きは、説明ページに書かれていません。実機で確かめてください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>演奏するというより、庭の手入れのように、音を少し抜いたり残したりして育てる感覚でした。ベルの音は長さの違うループの組み合わせなので、ほとんど同じ形をくり返しません。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>MAKU が「選ぶ」なら、AMB-1 は「手入れする」。どちらも<span class="term">アンビエント</span>（環境音楽）と呼ばれるジャンルです。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="quiz">
+      <h3>乗り換えクイズ</h3>
+      <p>5問中4問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <div data-quiz></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+    <div class="task" data-task="check">
+      <h3>乗り換えチェック</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="x0x"> X0X で4つ打ちのビートを鳴らした</label></li>
+        <li><label><input type="checkbox" data-item="303"> 303 のラインを生成して、フィルターを動かした</label></li>
+        <li><label><input type="checkbox" data-item="maku"> MAKU か AMB-1 で、自動の音楽を聞きながら選んだ・手入れした</label></li>
+        <li><label><input type="checkbox" data-item="back"> 終わったら純正（またはいつものファーム）に戻せた</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card"><h2>コラム：JIANT FM</h2><p>有志の一覧によると、<a href="https://juanjiant-bit.github.io/JIANT/webapp/installer/" target="_blank" rel="noopener">JIANT FM</a> は Felucca に SLOOP のソング機能を足したファームで、開発中と書かれています。ボタン1つで曲全体を作り直すような遊び方が紹介されることもありますが、操作はこの教材では確かめていません。<a href="../fw.html">ファーム図鑑</a>から最新の情報を確認してください。</p></section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch14.html"><strong>第14章 家族で遊ぶ</strong></a>。</p>
+    <p class="src">出典：X0X の公式マニュアル、MAKU の README、AMB-1 の説明ページ、有志の一覧（fm1-editor.com）</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch13.js"></script>
+</body>
+</html>

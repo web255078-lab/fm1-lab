@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第15章 外とつなぐ | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第3部 ファームで遊び尽くす ・ 第15章 ・ 約35分</div>
+    <h1>外とつなぐ（USB録音・CTL-1 で Bluetooth MIDI）</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>FM-1 を、ほかの機械やアプリとつなぎます。<strong>音を録る</strong>（USB オーディオ）と、<strong>鍵盤として使う</strong>（MIDI）の2つです。iPad の Koala Sampler（<a href="https://web255078-lab.github.io/koala-lab/" target="_blank" rel="noopener">コアラ・ラボ</a>）と組み合わせると、遊びが一気に広がります。</p>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">15-1</div>
+    <h2>FM-1 の音を USB で録る</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>下の「録音機」で、FM-1 の音を USB で取り込んで録音してみてください（PC か Android の Chrome）。</p><div class="rec-box"><div class="form-row"><label>入力 <select id="recDev"><option value="">（「許可して一覧を出す」を押す）</option></select></label><button class="btn sub" id="recPerm">許可して一覧を出す</button></div><div class="btn-row"><button class="btn" id="recBtn">● 録音</button><span class="muted" id="recTime"></span></div><div id="recList"></div></div><div class="check-hw">純正ファームに USB オーディオ（音を USB で送る機能）があるかは、取扱説明書に書かれていません。Felucca と Melodee は README に記載があり、Felucca は「Felucca」という名前の入力として見え、MENU の USB LEVEL で音量の扱いを選べます。</div><p class="feedback" data-fb="try1"></p>
+      
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>FM-1 の音が、ケーブル1本でブラウザに入って録音できました。保存したファイルは、コアラ・ラボ第2章の方法で Koala にも読み込めます（Koala が読める形式かは要確認）。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>USB で音を送ることを<span class="term">USB オーディオ</span>、送る側を<span class="term">オーディオインターフェース</span>と呼びます。FM-1（Felucca）は、オーディオインターフェースにもなるということです。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">15-2</div>
+    <h2>純正の Bluetooth MIDI で Koala を弾く</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>FM-1 の <strong>HOME を長押し</strong>して Bluetooth を ON にし、iPad の Koala Sampler の設定（Settings の MIDI）から FM-1 を探してつなぎます。つながったら FM-1 の鍵盤で Koala のパッドが鳴るか試してください。</p><div class="check-hw">Koala での Bluetooth MIDI 機器のつなぎ方と、FM-1 の鍵盤がどのパッドに対応するかは、両方の説明書からは確かめられていません。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>ケーブルなしで、FM-1 が iPad のアプリの鍵盤になりました。FM-1 の取扱説明書によると、純正でも USB・Bluetooth・3.5mm の3つの MIDI を同時に使えます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>MIDI で音を鳴らされる側を<span class="term">音源</span>、鳴らす側を<span class="term">MIDI コントローラー</span>といいます。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">15-3</div>
+    <h2>CTL-1：コントローラー専用にする</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><a href="https://charlesvestal.github.io/fm1-ctl/install/" target="_blank" rel="noopener">CTL-1</a> は、FM-1 を MIDI コントローラーにするファームです（README より）。</p><ul><li>USB と Bluetooth の MIDI（起動のたびに「FM-1」という名前で見つかる）</li><li>弾く強さと押し込み（アフタータッチ）に対応。白鍵にスケール、黒鍵にコード</li><li>4つのつまみで、4バンクぶんのつまみ情報（CC）を送る</li><li>何もつながなくても、内蔵の GM 音源で鳴る</li></ul><p>入れたら、<a href="../diag.html">接続診断</a>で鍵盤とつまみを動かして、何が届くか見てください。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>純正よりも「ほかの機械を弾く」ことに特化した FM-1 になりました。つまみの CC は、第5章のブラウザのシンセのつまみも動かせる可能性があります（74・71・73・75・72 番を送れば）。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p><span class="term">GM 音源</span>（ジェネラル MIDI）は、ピアノ・ドラムなどの決まった番号の音がそろった、標準的な音源の決まりです。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="check">
+      <h3>つないだチェック</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="rec"> FM-1 の音を USB で録音して、ファイルに保存した（できたファームで）</label></li>
+        <li><label><input type="checkbox" data-item="ble"> Bluetooth MIDI で、FM-1 からほかのアプリを鳴らした（または試した）</label></li>
+        <li><label><input type="checkbox" data-item="diag"> 接続診断で、つまみや鍵盤から届く情報を見た</label></li>
+        <li><label><input type="checkbox" data-item="koala"> 録った FM-1 の音を Koala に入れた、または FM-1 で Koala を弾いた</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch16.html"><strong>第16章 卒業制作</strong></a>。</p>
+    <p class="src">出典：FM-1 取扱説明書、Felucca の README、CTL-1 の README</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch15.js"></script>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第11章 ファーム入れ替えの基本と安全 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第3部 ファームで遊び尽くす ・ 第11章 ・ 約30分</div>
+    <h1>ファーム入れ替えの基本と安全</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>FM-1 の中のプログラム（ファームウェア）を入れ替えると、まったく別の楽器になります。とても楽しい一方で、<strong>失敗すると起動しなくなる</strong>こともあります。この章は、遊ぶ前の安全講習です。</p><div class="caution">ここで扱うファームは、純正以外はすべて有志が作ったもので、どれも「自己責任で」と書かれています。この教材も、うまくいくことを保証できません。</div>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">11-1</div>
+    <h2>入れ替えの流れ</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>どのファームも、だいたい同じ流れです。</p><ol><li><strong>PC の Chrome か Edge</strong> で、そのファームのインストールページを開く</li><li>FM-1 を <strong>データ通信できる USB ケーブル</strong>で PC に直接つなぐ（ハブは使わない）</li><li><strong>MIDI を使うほかのアプリやタブを閉じる</strong>（この教材のタブも）</li><li>インストールのボタンを押し、<strong>終わるまでケーブルを抜かない・PC をスリープさせない</strong></li></ol><p>まだ入れなくてOK。<a href="../fw.html">ファーム図鑑</a>で、気になるものを1つ選んで、その「純正に戻す方法」を読んでおいてください。</p>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>多くのファームは、ブラウザだけで入れられて、PC に何もインストールしなくて済みます。ただし手順の途中で止まると危ないので、ケーブル・アプリ・電源の3つに気をつけます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>本体の中のプログラムを<span class="term">ファームウェア</span>、入れ替えることを<span class="term">書き込み</span>（フラッシュ）、有志が作ったものを<span class="term">カスタムファームウェア</span>（CFW）と呼びます。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">11-2</div>
+    <h2>純正に戻す方法を知っておく</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>戻し方は大きく2つです。</p><ul><li><strong>インストーラーの「Return to official V15」など</strong>：多くの有志ファームのインストールページにある。M-VAVE の公式ファイル（V15）を使う</li><li><strong>M-VAVE 公式の M-UPGRADE</strong>：Windows・Mac 用の更新ソフト。<a href="https://www.m-vave.com/download" target="_blank" rel="noopener">m-vave.com/download</a> から</li></ul><p>M-VAVE のダウンロードページで、FM-1 のファイル（V15）があることを確かめてください。</p><div class="check-hw">M-VAVE のページには、Windows／Mac 用の FM-1 ファームが V14、PC Firmware として V15（.fwsc）が載っていました（2026年10月時点）。どれを使うかは実機と各インストーラーの案内で確かめてください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>どのファームに行っても、「純正に戻る道」が用意されています。M-UPGRADE で「Failed to enter upgrade mode!」と出たときは、ソフトを開いたまま USB を挿し直して続けるよう、公式ページに書かれています。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>工場出荷のファームを<span class="term">純正ファーム</span>（ストックファーム）と呼びます。この教材の第2部は純正が前提です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">11-3</div>
+    <h2>困ったときの手順</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>書き込みに失敗して<strong>画面が真っ暗のまま</strong>になったときの、有志ファームの説明書に共通する手順です。読むだけでOK。</p><ol><li>PC に <strong>WL80UBOOT</strong> という名前の機器（または USB の ID 4C4A:8057）が見えているか確かめる＝書き込み待ちの状態</li><li>別の<strong>データ用 USB ケーブル</strong>に替える</li><li>MIDI を使うほかのアプリを閉じる</li><li>インストーラーをもう一度動かす</li><li>それでもだめなら、各説明書にある復旧の道具（FM-1 Transporter など）へ。ここは上級者向け</li></ol>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>真っ暗でも、多くの場合は「書き込みを待っている状態」で、もう一度書き込めば戻ります。あわてて何度も抜き差しするより、ケーブルとアプリを見直すのが先です。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>起動できない状態を俗に<span class="term">文鎮化</span>（ブリック）と言います。FM-1 は、くり返し起動に失敗すると書き込みを待つ状態になる、と説明しているファームもあります。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">11-4</div>
+    <h2>記録を残してから入れる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>入れ替えると、いまのファームの中の音やパターンは消えることがあります。</p><ul><li>純正：自分で作ったプリセット番号と設定をメモしておく（第9章）</li><li>Felucca・Melodee など：インストーラーが先にバックアップを取る仕組みがあるものも（各説明書）</li><li>X0X：専用のバックアップページでファイルに保存できる</li></ul>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>ファームによって、記録の残し方が違いました。共通するのは「入れる前に残す」です。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>入れ替える前の記録の保存を<span class="term">バックアップ</span>、戻すことを<span class="term">リストア</span>といいます。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="quiz">
+      <h3>安全クイズ</h3>
+      <p>6問中5問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <div data-quiz></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+    <div class="task" data-task="check">
+      <h3>書き込み前のチェックリスト（毎回これを）</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="cable"> データ通信できる USB ケーブルで、PC に直接つないだ</label></li>
+        <li><label><input type="checkbox" data-item="apps"> MIDI を使うほかのアプリ・タブを閉じた</label></li>
+        <li><label><input type="checkbox" data-item="power"> PC の電源とスリープ設定を確かめた。FM-1 の電池も十分</label></li>
+        <li><label><input type="checkbox" data-item="back"> そのファームの「純正に戻す方法」を読んだ</label></li>
+        <li><label><input type="checkbox" data-item="backup"> いまの音・パターンをバックアップした（またはメモした）</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch12.html"><strong>第12章 Feluccaで4トラック作曲</strong></a>。</p>
+    <p class="src">出典：M-VAVE ダウンロードページ、Felucca・PurpleMonkey・MAKU などの README</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch11.js"></script>
+</body>
+</html>

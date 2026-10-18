@@ -21,7 +21,7 @@ document.getElementById('toc').innerHTML = PARTS.map((p) => `
         const st = all[c.id];
         const badge = st?.done ? '<span class="badge ok">クリア</span>'
           : st && Object.keys(st.tasks).length ? '<span class="badge wait">とちゅう</span>'
-          : c.ready ? '' : '<span class="badge">準備中</span>';
+          : c.ready ? (c.draft ? '<span class="badge draft">下書き</span>' : '') : '<span class="badge">準備中</span>';
         const inner = `<span class="no">${c.no}</span><span>${c.title} ${badge}</span><span class="min">${c.min}分</span>`;
         return `<li>${c.ready ? `<a href="chapters/${c.id}.html">${inner}</a>` : `<span class="soon">${inner}</span>`}</li>`;
       }).join('')}

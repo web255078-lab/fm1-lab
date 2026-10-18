@@ -1,15 +1,17 @@
 // オフライン対応：最初に全部をしまっておく。つながっていれば最新を取りに行き、だめならしまったものを出す。
 // ファイルを増やしたら PRECACHE に足し、VERSION を上げる。
-const VERSION = 'fm1lab-v6';
+const VERSION = 'fm1lab-v7';
 const PRECACHE = [
   './', './index.html', './diag.html', './fw.html',
   './chapters/ch01.html', './chapters/ch02.html', './chapters/ch03.html', './chapters/ch04.html', './chapters/ch05.html',
+  './chapters/ch06.html', './chapters/ch07.html', './chapters/ch08.html', './chapters/ch09.html', './chapters/ch10.html', './chapters/ch11.html', './chapters/ch12.html', './chapters/ch13.html', './chapters/ch14.html', './chapters/ch15.html', './chapters/ch16.html',
   './css/style.css', './manifest.webmanifest', './icons/icon.svg',
   './js/index.js', './js/diag.js', './js/fw.js', './js/ch01.js', './js/ch02.js', './js/ch03.js', './js/ch04.js', './js/ch05.js',
+  './js/ch06.js', './js/ch07.js', './js/ch08.js', './js/ch09.js', './js/ch10.js', './js/ch11.js', './js/ch12.js', './js/ch13.js', './js/ch14.js', './js/ch15.js', './js/ch16.js',
   './js/core/store.js', './js/core/notes.js', './js/core/midi.js', './js/core/synth.js',
   './js/core/input.js', './js/core/keyboard.js', './js/core/guide.js', './js/core/audioin.js',
   './js/core/scope.js', './js/core/judge.js', './js/core/chapters.js', './js/core/shell.js',
-  './js/core/lesson.js', './js/core/rhythm.js', './js/core/synthpanel.js', './js/core/firmware.js', './js/core/fx.js', './js/core/mixer.js',
+  './js/core/lesson.js', './js/core/rhythm.js', './js/core/synthpanel.js', './js/core/firmware.js', './js/core/fx.js', './js/core/mixer.js', './js/core/fmdemo.js',
 ];
 
 // 1つ取れなくても残りはしまう（全部まとめて失敗しないように）

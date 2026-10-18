@@ -150,6 +150,13 @@ export function createChapter(o) {
     b.hidden = true;
   }));
 
+  // 実機でやってみたら押す（本人の申告で開く。実機の中はブラウザから見えない操作のため）
+  $$('[data-did]').forEach((btn) => btn.addEventListener('click', () => {
+    const sec = btn.closest('.lesson');
+    reveal(sec.dataset.try);
+    $$('[data-did]', sec).forEach((x) => (x.hidden = true));
+  }));
+
   $('#resetCh')?.addEventListener('click', () => {
     if (!confirm(`${o.title}の記録を消しますか？`)) return;
     progress.resetChapter(CH);
@@ -256,9 +263,68 @@ export function createChapter(o) {
     return Array.from({ length: e - s + 1 }, (_, i) => s + i);
   }
 
+  // ---- チェックリスト課題：全部チェックでクリア（チェック状態も記録） ----
+  function checklist(id) {
+    const el = document.querySelector(`[data-task="${id}"]`);
+    const boxes = $$('input[type="checkbox"][data-item]', el);
+    const t = progress.chapter(CH).tasks;
+    boxes.forEach((b) => {
+      const key = `${id}:${b.dataset.item}`;
+      b.checked = !!t[key] || !!t[id];
+      b.addEventListener('change', () => {
+        if (b.checked) progress.markTask(CH, key);
+        if (boxes.every((x) => x.checked)) {
+          markCleared(id);
+          const f = $('.feedback', el);
+          if (f) { f.textContent = 'クリア！'; f.className = 'feedback ok'; }
+        }
+      });
+    });
+  }
+
+  // ---- 選択クイズ：questions = [{q, options:[...], answer: index, explain}] ----
+  function quiz(id, questions, { need = questions.length } = {}) {
+    const el = document.querySelector(`[data-task="${id}"]`);
+    const box = $('[data-quiz]', el), f = $('.feedback', el), st = $('.status', el), dots = $('.dots', el), start = $('[data-start]', el);
+    let order = [], i = 0, correct = 0, marks = [], lock = false;
+    const draw = () => (dots.innerHTML = order.map((_, k) => `<i class="${marks[k] || ''}"></i>`).join(''));
+    const ask = () => {
+      const q = questions[order[i]];
+      st.textContent = `${i + 1} / ${order.length}`;
+      box.innerHTML = `<p class="quiz-q quiz-q-sm">${q.q}</p><div class="btn-row">${q.options.map((op, k) => `<button class="chip" data-k="${k}">${op}</button>`).join('')}</div>`;
+      f.textContent = ''; f.className = 'feedback';
+    };
+    box.addEventListener('click', async (e) => {
+      const b = e.target.closest('[data-k]');
+      if (!b || lock) return;
+      lock = true;
+      const q = questions[order[i]], ok = Number(b.dataset.k) === q.answer;
+      if (ok) correct++;
+      marks[i] = ok ? 'ok' : 'ng';
+      draw();
+      b.classList.add(ok ? 'sel' : 'wrong');
+      f.textContent = `${ok ? '正解！' : `ざんねん。答えは「${q.options[q.answer]}」`} ${q.explain || ''}`;
+      f.className = `feedback ${ok ? 'ok' : 'ng'}`;
+      await sleep(ok ? 1400 : 2600);
+      lock = false;
+      i++;
+      if (i < order.length) return ask();
+      box.innerHTML = '';
+      start.textContent = 'もう一度';
+      if (correct >= need) { f.textContent = `クリア！ ${order.length}問中${correct}問正解`; f.className = 'feedback ok'; markCleared(id); }
+      else { f.textContent = `${order.length}問中${correct}問。${need}問でクリア。もう一度`; f.className = 'feedback ng'; }
+    });
+    start.addEventListener('click', () => {
+      order = questions.map((_, k) => k).sort(() => Math.random() - 0.5);
+      i = 0; correct = 0; marks = [];
+      draw();
+      ask();
+    });
+  }
+
   const api = {
     CH, kb, get scope() { return scope; }, setScopeHidden, reveal, isTried, ui, markCleared,
-    bindStart, startTask, flashNg, visibleNotes, renderProgress,
+    bindStart, startTask, flashNg, visibleNotes, renderProgress, checklist, quiz,
   };
   // renderProgress は各章が課題を bind したあとに呼ぶ（クリア済み表示のため）
   return api;

@@ -12,12 +12,17 @@ let guardUntil = new Map(); // note -> time  （LEDガイド送信のエコー�
 export const onNote = (fn) => (listeners.add(fn), () => listeners.delete(fn));
 export const heldNotes = () => [...held.keys()].sort((a, b) => a - b);
 
+// 章によっては、ふつうのシンセの代わりに別の音源で鳴らす（第8章の FM 音源など）
+let localPlayer = null;
+export const setLocalPlayer = (fn) => (localPlayer = fn);
+
 function emit(ev) {
   if (ev.type === 'on') held.set(ev.note, ev);
   else held.delete(ev.note);
   const playLocal = ev.source !== 'midi' || settings.get().browserSound;
   if (playLocal) {
-    if (ev.type === 'on') synth.noteOn(ev.note, ev.velocity);
+    if (localPlayer) localPlayer(ev);
+    else if (ev.type === 'on') synth.noteOn(ev.note, ev.velocity);
     else synth.noteOff(ev.note);
   }
   listeners.forEach((fn) => fn(ev));

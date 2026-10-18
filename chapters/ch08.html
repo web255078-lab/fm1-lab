@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第8章 FM音源入門 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第2部 実機で弾く ・ 第8章 ・ 約60分</div>
+    <h1>FM音源入門</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+  <div class="draft-note">この章は、取扱説明書や各ファームの説明をもとに書いた下書きです。実機で確かめられていない操作は【要実機確認】としています。FM-1 が届いたら、<a href="../diag.html">接続診断</a>の「実機確認メモ」をもとに直します。</div>
+
+  <section class="card">
+    <p>FM-1 の「FM」は、音の<strong>作り方</strong>の名前です。第5章では「倍音の多い材料を削る」作り方を学びました。FM は逆に、<strong>なめらかな波どうしを揺らし合って、倍音を生み出します</strong>。まずブラウザの小さな FM 音源で仕組みを見て、それから実機で確かめます。</p><p class="muted"><small>このページのブラウザの FM 音源は、仕組みを見るための2つだけの簡易版です。FM-1 は6つで、もっと複雑な音が作れます。</small></p>
+  </section>
+
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">8-1</div>
+    <h2>揺らすと、倍音が生まれる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>下の「揺らす強さ」を0から少しずつ上げながら、鍵盤を弾いてください。窓は「中身を見る」にします（この節は、強さを大きく動かしながら弾くと開きます）。</p><div id="fmPanel" class="fm-panel"></div><p class="feedback" data-fb="try1"></p>
+      
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>強さ0のときは、窓の中の山が1本だけ（第1章の「なめらか」＝サイン波）。強さを上げると、その左右に山がどんどん増えて、音がギラギラ明るくなりました。</p><p>聞こえている波（A）の高さを、もう1つの波（B）でとても速く揺らしています。揺らす強さが大きいほど、倍音が増えます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>こうして音を作る方法を<span class="term">FM 音源</span>（周波数変調）といいます。聞こえる方の波を<span class="term">キャリア</span>、揺らす方の波を<span class="term">モジュレーター</span>、1つ1つの波の発生源を<span class="term">オペレーター</span>と呼びます。</p><p>第5章の LFO（1秒に数回）でキャリアの高さを揺らすとビブラートでした。それを1秒に何百回にまで速くしたのが FM です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">8-2</div>
+    <h2>比率で、楽器が変わる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>「揺らす速さの比」を 1 → 2 → 3.5 → 7 と変えて弾き比べてください。強さは半分くらいで。</p><p class="feedback" data-fb="try2"></p>
+      
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>比が 1 や 2 のような<strong>整数</strong>だと、ふつうの楽器らしい音（ブラスやオルガンのよう）。3.5 のような<strong>中途半端な数</strong>だと、鐘や金属を叩いたような、キラッとした不思議な音になりました。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>キャリアとモジュレーターの速さの比を<span class="term">周波数比</span>（レシオ）といいます。整数比なら倍音がきれいに並び、そうでないと「並ばない倍音」が混ざって金属的になります。FM 音源がベルやエレピを得意とする理由です。</p>
+    </div>
+  </section>
+
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">8-3</div>
+    <h2>実機の6つのオペレーター</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>FM-1 で <strong>ALGORITHM</strong> を回すと、画面に<strong>つなぎ方の図</strong>が出ます。いくつか回して、図の形と音の変化を見てください。</p><p>次に <strong>EDIT</strong> を押し、鍵盤の <strong>OP1〜OP6</strong> の印がついたキーで1つ選び、SELECT でページをめくります。4ページ目の <strong>Out Level</strong>（KNOB 4 の位置にあるはず）を、モジュレーターのオペレーターで動かしてみましょう。</p><div class="caution">EDIT で変えた音は、保存しなければ別のプリセットに切り替えたときに元に戻るはずです。気に入った音の保存は第9章で。</div><div class="check-hw">どのオペレーターがモジュレーターかは、アルゴリズムの図で上にある方（下のオペレーターに矢印が向いている方）が目安です。図の見方は実機の画面で確認してください。</div>
+      <div class="btn-row"><button class="btn" data-did>実機でやってみた</button></div>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>アルゴリズムを変えると、同じ6つのオペレーターでも、つなぎ方が変わって音が大きく変わりました。モジュレーターの Out Level を上げると、ブラウザの「揺らす強さ」と同じように音が明るくなります。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>FM-1 は<span class="term">6オペレーター・32アルゴリズム</span>。1980年代の名機ヤマハ DX7 と同じ形式で、説明書によると DX7 の音色データも読み込めます。EDIT の各オペレーターには、音量の時間変化（Rate 1〜4・Level 1〜4）、周波数比（FreqCoarse・FreqFine）などがあります。</p>
+    </div>
+  </section>
+
+  <section class="card" id="tasks">
+    <div class="num final-num">章末課題</div>
+    <h2>まとめ</h2>
+
+    <div class="task" data-task="bell">
+      <h3>課題 8-2　耳で当てる：ベル？ ブラス？</h3>
+      <p>ブラウザの FM 音源が鳴ります。周波数比が<strong>整数</strong>（楽器らしい）か、<strong>中途半端</strong>（ベル・金属的）か。6問中5問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <div class="btn-row"><button class="chip" data-a="int" disabled>整数（楽器らしい）</button><button class="chip" data-a="odd" disabled>中途半端（ベル）</button></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button><button class="btn sub" data-replay disabled>もう一度聞く</button></div>
+    </div>
+    <div class="task" data-task="quiz">
+      <h3>FM 用語クイズ</h3>
+      <p>5問中4問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <div data-quiz></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+    <div class="task" data-task="check">
+      <h3>実機でできたかチェック</h3>
+      <ul class="checks">
+        <li><label><input type="checkbox" data-item="alg"> ALGORITHM を回して、つなぎ方の図を見た</label></li>
+        <li><label><input type="checkbox" data-item="edit"> EDIT でオペレーターを選び、ページをめくった</label></li>
+        <li><label><input type="checkbox" data-item="level"> モジュレーターの Out Level を動かして、音が明るくなるのを聞いた</label></li>
+      </ul>
+      <div><span class="status">未挑戦</span></div>
+      <p class="feedback"></p>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <p>次は <a href="ch09.html"><strong>第9章 自分の音を作って保存</strong></a>。</p>
+    <p class="src">出典：M-VAVE FM-1 取扱説明書（英語版）</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch08.js"></script>
+</body>
+</html>
