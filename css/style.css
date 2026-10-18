@@ -298,3 +298,5 @@ svg.flow text.sub { fill: var(--muted); font-size: 11px; font-weight: 400; }
 @media (max-width: 520px) { .mix-row { grid-template-columns: 3.6em 1fr 1fr 1fr 3.8em; gap: 4px; } .mix-row .chip { padding: 4px 6px; font-size: 0.78rem; } }
 
 .sandbox-banner { background: #6a4bd8; color: #fff; text-align: center; font-size: 0.85rem; font-weight: 700; padding: 4px 8px; }
+
+.pill.offline { cursor: default; font-size: 0.78rem; }

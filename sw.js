@@ -1,6 +1,6 @@
 // オフライン対応：最初に全部をしまっておく。つながっていれば最新を取りに行き、だめならしまったものを出す。
 // ファイルを増やしたら PRECACHE に足し、VERSION を上げる。
-const VERSION = 'fm1lab-v5';
+const VERSION = 'fm1lab-v6';
 const PRECACHE = [
   './', './index.html', './diag.html', './fw.html',
   './chapters/ch01.html', './chapters/ch02.html', './chapters/ch03.html', './chapters/ch04.html', './chapters/ch05.html',
@@ -12,27 +12,51 @@ const PRECACHE = [
   './js/core/lesson.js', './js/core/rhythm.js', './js/core/synthpanel.js', './js/core/firmware.js', './js/core/fx.js', './js/core/mixer.js',
 ];
 
+// 1つ取れなくても残りはしまう（全部まとめて失敗しないように）
+async function precache() {
+  const cache = await caches.open(VERSION);
+  await Promise.allSettled(PRECACHE.map(async (u) => {
+    const res = await fetch(new Request(u, { cache: 'reload' }));
+    if (res.ok) await cache.put(u, res);
+  }));
+}
 self.addEventListener('install', (e) => {
-  e.waitUntil(caches.open(VERSION).then((c) => c.addAll(PRECACHE.map((u) => new Request(u, { cache: 'reload' })))).then(() => self.skipWaiting()));
+  e.waitUntil(precache().then(() => self.skipWaiting()));
 });
-
 self.addEventListener('activate', (e) => {
-  e.waitUntil(
-    caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k))))
-      .then(() => self.clients.claim()));
+  e.waitUntil(caches.keys().then((keys) => Promise.all(keys.filter((k) => k !== VERSION).map((k) => caches.delete(k)))).then(() => self.clients.claim()));
 });
 
+// 電波が弱いときに待たされすぎないよう、4秒で見切ってしまったものを出す
+const withTimeout = (p, ms) => Promise.race([p, new Promise((_, rej) => setTimeout(() => rej(new Error('timeout')), ms))]);
+async function fromCache(req) {
+  const opt = { ignoreSearch: true, ignoreVary: true };
+  const hit = (await caches.match(req, opt)) || (await caches.match(new URL(req.url).pathname, opt));
+  if (hit) return hit;
+  // ページを開こうとして見つからなければ、目次を出す
+  if (req.mode === 'navigate') return (await caches.match(new URL('./index.html', self.registration.scope).href, opt)) || Response.error();
+  return Response.error();
+}
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET' || new URL(req.url).origin !== location.origin) return;
-  e.respondWith(
-    caches.open(VERSION).then(async (cache) => {
-      try {
-        const res = await fetch(req, { cache: 'no-cache' }); // 毎回サーバーに確認（変わってなければ304で軽い）
-        if (res.ok) cache.put(req, res.clone());
-        return res;
-      } catch {
-        return (await cache.match(req, { ignoreSearch: true })) || Response.error();
-      }
-    }));
+  e.respondWith((async () => {
+    try {
+      const res = await withTimeout(fetch(req, { cache: 'no-cache' }), 4000);
+      if (res.ok) (await caches.open(VERSION)).put(req, res.clone());
+      return res;
+    } catch {
+      return fromCache(req);
+    }
+  })());
+});
+
+// ページから「オフラインの準備できてる？」と聞かれたら答える
+self.addEventListener('message', async (e) => {
+  if (e.data !== 'offline-status') return;
+  const cache = await caches.open(VERSION);
+  let have = 0;
+  for (const u of PRECACHE) if (await cache.match(u, { ignoreSearch: true, ignoreVary: true })) have++;
+  e.source?.postMessage({ type: 'offline-status', have, total: PRECACHE.length });
+  if (have < PRECACHE.length) precache(); // 足りなければ取り直す
 });
