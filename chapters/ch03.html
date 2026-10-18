@@ -1,0 +1,196 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第3章 リズムとテンポ | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第1部 届く前の予習 ・ 第3章 ・ 約30分 ・ 実機なしでOK</div>
+    <h1>リズムとテンポ</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+
+  <section class="card">
+    <p>第1章と第2章は「どの音か」。この章は<strong>「いつ鳴らすか」</strong>です。音楽の気持ちよさの半分は、ここで決まります。</p>
+    <p>叩き方は、どの鍵盤でもOK（画面・PCキーボード・FM-1）。PCなら<strong>スペースキー</strong>でも叩けます。タイミングは 1000分の1秒（ms）単位で記録されます。</p>
+    <p class="muted"><small>帯の見方：オレンジの丸＝叩くべき瞬間、白い縦線＝あなたが叩いた瞬間。終わると丸が色で採点されます（緑＝ぴったり、黄＝少しずれ、赤＝抜け）。</small></p>
+  </section>
+
+  <!-- 3-1 -->
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">3-1</div>
+    <h2>カチカチに合わせる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>「はじめる」を押すと、まず4回カチカチと鳴ります（準備）。続く<strong>8回のカチに合わせて</strong>叩いてください。</p>
+      <div class="task" data-task="p1">
+        <canvas class="timeline"></canvas>
+        <div><span class="status"></span><span class="dots"></span></div>
+        <p class="feedback"></p>
+        <div class="btn-row">
+          <button class="btn" data-start>はじめる</button>
+          <button class="btn sub" data-calib hidden>このずれを補正に使う</button>
+        </div>
+        <p class="muted"><small>いまの補正：<span data-offset>0</span> ms</small></p>
+      </div>
+      <p class="feedback" data-fb="try1"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>カチは、きっちり同じ間隔で鳴っていました。「ぴったり叩いたつもり」でも、帯を見ると少し早かったり遅かったりします。人間はたいてい、少し<strong>早め</strong>に叩きがちです。</p>
+      <p>同じ間隔でくり返すこの「カチ」を感じながら叩くと、ずれはだんだん小さくなっていきます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>音楽の土台になる、一定の間隔のくり返しを<span class="term">拍</span>（ビート）といいます。拍をカチカチ鳴らしてくれる道具が<span class="term">メトロノーム</span>です。</p>
+      <p class="muted"><small>補正について：スピーカーやBluetoothイヤホン、USB機器には、それぞれ少しの遅れがあります。何度やっても同じ向きに同じくらいずれるなら、「このずれを補正に使う」で差し引けます。</small></p>
+    </div>
+  </section>
+
+  <!-- 3-2 -->
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">3-2</div>
+    <h2>速さを変える</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>下のつまみで速さを変えて、何回か叩いてみてください。<strong>ゆっくり</strong>と<strong>速い</strong>の両方を試します。</p>
+      <div class="form-row">
+        <label>速さ <input type="range" id="bpm" min="60" max="180" step="5" value="100"></label>
+        <b id="bpmVal">100</b>
+      </div>
+      <div class="task" data-task="p2">
+        <canvas class="timeline"></canvas>
+        <div><span class="status"></span><span class="dots"></span></div>
+        <p class="feedback"></p>
+        <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+      </div>
+      <p class="feedback" data-fb="try2"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>数字を大きくすると、カチの間隔がつまって速くなりました。ゆっくりすぎると、かえって合わせにくかったかもしれません。間が長いと、次がいつ来るか予想しにくいからです。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>拍の速さを<span class="term">テンポ</span>といい、<span class="term">BPM</span>（1分間に拍がいくつあるか）で表します。</p>
+      <p>BPM 60 なら1拍1秒、BPM 120 なら1拍0.5秒。ポップスは 90〜130 あたりが多めです。</p>
+    </div>
+
+    <div class="task" data-task="t2">
+      <h3>課題 3-2　3つのテンポ</h3>
+      <p>BPM 80 → 120 → 150 の順に、8拍ずつ。<strong>それぞれ70点以上</strong>でクリア。</p>
+      <canvas class="timeline"></canvas>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+  </section>
+
+  <!-- 3-3 -->
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">3-3</div>
+    <h2>4つでひとまとまり</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>今度のカチは、<strong>4回に1回だけ高い音</strong>になります。「1、2、3、4」と心の中で数えながら、<strong>高いカチ（1）のときだけ</strong>叩いてください。4回分。</p>
+      <div class="task" data-task="p3">
+        <canvas class="timeline"></canvas>
+        <div><span class="status"></span><span class="dots"></span></div>
+        <p class="feedback"></p>
+        <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+      </div>
+      <p class="feedback" data-fb="try3"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>拍が4つずつのまとまりに聞こえてきました。高いカチは「ここから新しいまとまり」という合図です。帯の太い線が、そのまとまりの区切りです。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>拍のまとまりを<span class="term">小節</span>、1小節にいくつ拍があるかを<span class="term">拍子</span>といいます。4つなら<span class="term">4分の4拍子</span>（4/4）。ほとんどのポップスやダンス音楽はこれです。</p>
+      <p>小節の最初の拍が<span class="term">1拍目</span>。ここが一番どっしり感じる拍です。</p>
+    </div>
+
+    <div class="task" data-task="t3">
+      <h3>課題 3-3　2と4だけ叩く</h3>
+      <p>今度は逆に、<strong>2拍目と4拍目だけ</strong>。手拍子をするときの、あのノリです。BPM 100 で4小節、70点以上でクリア。</p>
+      <canvas class="timeline"></canvas>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+  </section>
+
+  <!-- 3-4 -->
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">3-4</div>
+    <h2>拍を割る</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>カチとカチの<strong>ちょうど真ん中</strong>にも、もう1回叩きます。つまり「カチ・トン・カチ・トン」と、1拍に2回。BPM 80 で2小節。</p>
+      <div class="task" data-task="p4">
+        <canvas class="timeline"></canvas>
+        <div><span class="status"></span><span class="dots"></span></div>
+        <p class="feedback"></p>
+        <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+      </div>
+      <p class="feedback" data-fb="try4"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>1拍を半分に割ると、叩く回数が倍になって、リズムがこまかく、にぎやかになりました。真ん中の「トン」は、カチがない分だけ難しかったはずです。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>1拍分の長さの音を<span class="term">4分音符</span>、その半分を<span class="term">8分音符</span>、さらに半分（1拍に4つ）を<span class="term">16分音符</span>と呼びます。拍の真ん中の位置は<span class="term">裏拍</span>（ウラ）です。</p>
+      <p>多くのシンセのシーケンサー（自動演奏の機能）は、1マスを16分音符として並べます。</p>
+      <div class="check-hw">FM-1（純正・Felucca）のシーケンサーの1マスが16分音符か、変えられるかは未確認です。Felucca は1トラック64ステップと README にあります。</div>
+    </div>
+
+    <div class="task" data-task="t4">
+      <h3>課題 3-4　リズムまね</h3>
+      <p>1小節のリズムを<strong>聞いて</strong>、次にカチだけが鳴るので<strong>同じように叩きます</strong>。3パターン、それぞれ70点以上でクリア。</p>
+      <p class="quiz-q" data-q></p>
+      <canvas class="timeline"></canvas>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+  </section>
+
+  <!-- 章末 -->
+  <section class="card" id="final">
+    <div class="num final-num">章末課題</div>
+    <h2>ドン・タン</h2>
+    <p>ドラムの一番基本の形。<strong>低い鍵盤（ド4より左）</strong>で「ドン」（1拍目・3拍目）、<strong>高い鍵盤（ド4から右）</strong>で「タン」（2拍目・4拍目）。BPM 90 で2小節、平均70点以上でクリア。</p>
+    <p class="muted"><small>PCキーボードなら Z で1オクターブ下げて、左手 A（ドン）と右手 K（タン）が叩きやすいです。スペースキーはこの課題では数えません。</small></p>
+    <div class="task" data-task="final">
+      <canvas class="timeline"></canvas>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn sub" data-demo>見本を聞く</button>
+        <button class="btn" data-start>はじめる</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <h2>FM-1 が届いたら</h2>
+    <p>FM-1 の鍵盤で叩いても、同じように採点されます。ただし USB-MIDI の遅れがあるので、まず 3-1 で補正を取り直してください。</p>
+    <div class="check-hw">FM-1 からの MIDI の遅れがどれくらいか、FM-1 の内蔵メトロノームやテンポ設定の操作方法は未確認です。</div>
+    <p>次は <a href="ch04.html"><strong>第4章 スケールとコード</strong></a>。音を並べ、重ねます。</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch03.js"></script>
+</body>
+</html>

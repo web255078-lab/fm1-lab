@@ -1,0 +1,235 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第1章 音の正体 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第1部 届く前の予習 ・ 第1章 ・ 約30分 ・ 実機なしでOK</div>
+    <h1>音の正体</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+
+  <section class="card">
+    <p>この章では、「音ってそもそも何なのか」を、目と耳と指で確かめます。説明はあとから出てきます。まずは鳴らしてください。</p>
+    <p>画面のいちばん下に、<strong>鍵盤</strong>と<strong>音を見る窓</strong>があります。弾き方は3通り、どれでも同じように進められます。</p>
+    <ul>
+      <li>画面の鍵盤をクリック、またはタップ</li>
+      <li>PCのキーボード：下の段 <code>A S D F G H J K</code> が白い鍵盤、上の段 <code>W E T Y U</code> が黒い鍵盤</li>
+      <li>FM-1 をUSBでつないでいれば、実機の鍵盤（上の「🎹 実機をつなぐ」を押す）</li>
+    </ul>
+    <p class="muted"><small>音が出ないときは、上の「🔇 音を出す」を押してください。ブラウザは、一度画面を触るまで音を出さない決まりになっています。</small></p>
+  </section>
+
+  <!-- 1-1 -->
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">1-1</div>
+    <h2>鳴らして、見る</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>鍵盤をどれか1つ、<strong>押しっぱなし</strong>にしてください（1秒くらい）。押している間と、離したあとで、下の窓の線がどうなるかを見ます。</p>
+      <p class="feedback" data-fb="try1"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>押している間だけ、線が上下にくねくね動きました。離すと、まっすぐな横線に戻ります。</p>
+      <p>スピーカーの中では、うすい膜が前後にふるえて、空気を押したり引いたりしています。窓の線は、そのふるえを時間の流れにそって描いたものです。線が上に振れたら「押した」、下に振れたら「引いた」。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>このふるえを<span class="term">振動</span>、振動を描いた形を<span class="term">波形</span>と呼びます。</p>
+      <p>音とは、空気の振動のこと。耳の奥の鼓膜が、その振動を受け止めています。</p>
+    </div>
+  </section>
+
+  <!-- 1-2 -->
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">1-2</div>
+    <h2>高い音・低い音</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p><strong>左のほうの鍵盤</strong>と<strong>右のほうの鍵盤</strong>を、交互に押してみてください。窓の中の「山」の数を比べます。</p>
+      <p class="muted"><small>鍵盤の上の「◀ 低く」「高く ▶」で、もっと端まで行けます（PCキーボードなら <code>Z</code> / <code>X</code>）。</small></p>
+      <p class="feedback" data-fb="try2"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>右の鍵盤（高い音）ほど、山がぎっしり細かくなりました。左（低い音）は、ゆったり大きな山です。</p>
+      <p>窓の横幅は、いつも同じ時間（およそ50分の1秒）を映しています。山が多いということは、同じ時間のうちに<strong>たくさんふるえている</strong>ということ。窓の下に出ている「1秒に◯回」が、その回数です。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>1秒間にふるえる回数を<span class="term">周波数</span>といい、単位は<span class="term">Hz（ヘルツ）</span>です。周波数が大きいほど、高い音に聞こえます。音の高さのことは<span class="term">ピッチ</span>とも言います。</p>
+      <p>楽器の音合わせに使う「ラ（A4）」は 440 Hz。1秒に440回ふるえています。</p>
+    </div>
+
+    <div class="task" data-task="l2a">
+      <h3>課題 1-2A　光った鍵盤を弾こう</h3>
+      <p>オレンジに光った鍵盤を弾きます。5問。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+
+    <div class="task" data-task="l2b">
+      <h3>課題 1-2B　どっちが高い？</h3>
+      <p>2つの音が順番に鳴ります。<strong>高かったのはどっち？</strong> 耳だけで、3問正解でクリア。だんだん差が小さくなります。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-replay disabled>もう一度聞く</button>
+        <button class="chip" data-answer="1" disabled>1つ目</button>
+        <button class="chip" data-answer="2" disabled>2つ目</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1-3 -->
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">1-3</div>
+    <h2>大きい音・小さい音</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>同じ鍵盤を、<strong>そっと</strong>弾いたり、<strong>強く</strong>弾いたりしてみてください。窓の線の何が変わるでしょう。</p>
+      <ul>
+        <li>画面の鍵盤：鍵盤の<strong>上のほう</strong>を押すと弱く、<strong>下（手前）のほう</strong>を押すと強く</li>
+        <li>PCキーボード：数字の <code>1</code>（弱）<code>2</code>（中）<code>3</code>（強）で切り替え。<code>Shift</code> を押しながら弾くと、その1回だけ強く</li>
+        <li>FM-1：指の強さで変わるかどうかは、実機が届いてから確かめます</li>
+      </ul>
+      <div class="check-hw">FM-1 の鍵盤が弾く強さ（ベロシティ）を送るかは未確認です。送らない場合、この課題は画面の鍵盤かPCキーボードで進めてください。<a href="../diag.html">接続診断</a>の「強さの幅」で確かめられます。</div>
+      <p class="feedback" data-fb="try3"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>強く弾くと、山の<strong>高さ</strong>（上下の振れ幅）が大きくなりました。でも山の<strong>数</strong>（細かさ）は変わっていません。</p>
+      <p>音は大きくなったけれど、音の高さは同じまま。「大きさ」と「高さ」は、別々に動いています。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>上下の振れ幅を<span class="term">振幅</span>といいます。振幅が大きいほど<span class="term">音量</span>が大きく聞こえます。</p>
+      <p>鍵盤をどれくらいの強さで弾いたかは、シンセの世界では<span class="term">ベロシティ</span>と呼び、0〜127の数で表します。窓の下の「強さ」がそれです。</p>
+      <p>高さは周波数、大きさは振幅。ここまでで、音の性質が2つそろいました。</p>
+    </div>
+
+    <div class="task" data-task="l3">
+      <h3>課題 1-3　小さく → 大きく → 小さく</h3>
+      <p><strong>同じ鍵盤</strong>を3回、「弱い（強さ60以下）→ 強い（95以上）→ 弱い」の順に弾きます。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+  </section>
+
+  <!-- 1-4 -->
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">1-4</div>
+    <h2>同じ高さ、ちがう音</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>下のボタンで「ゆれの形」を切り替えながら、<strong>同じ鍵盤</strong>を弾いてみてください。窓のタブを「中身を見る」にも切り替えてみましょう。</p>
+      <div class="btn-row" id="waveChips">
+        <button class="chip" data-wave="sine">なめらか</button>
+        <button class="chip" data-wave="triangle">とがった山</button>
+        <button class="chip sel" data-wave="sawtooth">のこぎり</button>
+        <button class="chip" data-wave="square">しかく</button>
+      </div>
+      <p class="feedback" data-fb="try4"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>同じ鍵盤なのに、聞こえ方がずいぶん違いました。「なめらか」はやわらかい笛のような音、「のこぎり」はギラッと明るい音。</p>
+      <p>「中身を見る」にすると、「なめらか」は山が1本立つだけ。ほかの形は、その右（高い側）にも山がいくつも並んでいます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>同じ高さ・同じ大きさでも違って聞こえる「音の個性」を<span class="term">音色</span>といいます。</p>
+      <p>中身の窓で右に並んでいた山は<span class="term">倍音</span>。弾いた音の2倍、3倍、4倍…の速さの振動が混ざっていて、その混ざり方が音色を決めています。中身の窓の見え方は<span class="term">スペクトル</span>と呼びます。</p>
+      <p>4つの形にも名前があります。なめらか＝<span class="term">サイン波</span>、とがった山＝<span class="term">三角波</span>、のこぎり＝<span class="term">ノコギリ波</span>、しかく＝<span class="term">矩形波</span>（くけいは）。</p>
+      <p>シンセサイザーは、この倍音を足したり削ったりして音色を作る楽器です。くわしくは第5章と第8章で。</p>
+    </div>
+
+    <div class="task" data-task="l4">
+      <h3>課題 1-4　耳で形当て</h3>
+      <p>隠れた形で「ド」が鳴ります。どの形か当ててください。<strong>窓は隠れます</strong>（耳だけで）。3問中2問正解でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-replay disabled>もう一度聞く</button>
+      </div>
+      <div class="btn-row">
+        <button class="chip" data-answer="sine" disabled>なめらか</button>
+        <button class="chip" data-answer="triangle" disabled>とがった山</button>
+        <button class="chip" data-answer="sawtooth" disabled>のこぎり</button>
+        <button class="chip" data-answer="square" disabled>しかく</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 1-5 -->
+  <section class="card lesson" id="l5" data-try="try5">
+    <div class="num">1-5</div>
+    <h2>2倍の高さ</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>「ド」を弾いて、窓の下の「1秒に◯回」を覚えてください。次に、右へ白い鍵盤を7つ進んだところにある、<strong>次の「ド」</strong>を弾きます。</p>
+      <p class="feedback" data-fb="try5"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>262回 → 523回。ほぼぴったり<strong>2倍</strong>になりました。耳には「同じドの、高いバージョン」に聞こえたはずです。</p>
+      <p>鍵盤を見ると、白と黒の並び方の模様が、そこからまた最初の形に戻って繰り返しています。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>この「周波数が2倍」の関係を<span class="term">オクターブ</span>といいます。</p>
+      <p>鍵盤は、白7つ＋黒5つ＝<strong>12個で1オクターブ</strong>。12個進むと周波数は2倍、12個戻ると半分です。「C4」の「4」は、何番目のオクターブかを表す番号。真ん中のドが C4 です。</p>
+    </div>
+
+    <div class="task" data-task="l5">
+      <h3>課題 1-5　1オクターブ上を弾こう</h3>
+      <p>光った鍵盤の、<strong>1オクターブ上</strong>（同じ名前の、次の鍵盤）を弾きます。3問。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row"><button class="btn" data-start>はじめる</button></div>
+    </div>
+  </section>
+
+  <!-- 章末 -->
+  <section class="card" id="final">
+    <div class="num" style="font-size:.8rem;font-weight:800;color:var(--accent)">章末課題</div>
+    <h2>耳コピのはじめの一歩</h2>
+    <p>ブラウザが1つ音を鳴らします。それと<strong>同じ高さの鍵盤</strong>を探して弾いてください。範囲は ド（C4）〜 ド（C5）の白い鍵盤。何回まちがえてもOK、3問見つけたらクリア。</p>
+    <p class="muted"><small>手がかり：まず「基準のド」を聞いて、それより高いか低いか、どれくらい離れているかを考えます。1-2 と 1-5 でやったことが使えます。</small></p>
+    <div class="task" data-task="final">
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-replay disabled>もう一度聞く</button>
+        <button class="btn sub" data-ref disabled>基準のド</button>
+        <button class="btn sub" data-hint disabled>ヒント（光らせる）</button>
+      </div>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <h2>FM-1 が届いたら</h2>
+    <p>この章の課題は、実機の鍵盤でもそのまま遊べます。上の「🎹 実機をつなぐ」を押してから弾くと、ブラウザが判定します。</p>
+    <p>窓の「FM-1の音」に切り替えると、ブラウザの音ではなく<strong>FM-1が実際に出している音</strong>の波形が見えます（USBで音を受け取る機能を使う、実験的な機能です）。</p>
+    <div class="check-hw">純正ファームでUSBオーディオが使えるか、ブラウザに何という名前で見えるかは未確認です。Felucca／Melodee では README に記載があります。まず<a href="../diag.html">接続診断</a>で確かめてください。</div>
+    <p>次は <strong>第2章 鍵盤の地図</strong>（準備中）。ドレミの並びと、黒い鍵盤の意味を体で覚えます。</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <!-- 鍵盤と窓（画面下に固定）。中身は js/core/lesson.js が作る -->
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch01.js"></script>
+</body>
+</html>

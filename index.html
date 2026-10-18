@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>FM-1 ラボ</title>
+<meta name="description" content="M-VAVE FM-1 で学ぶ、ほんとうの初心者のためのインタラクティブ教材">
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main>
+  <h1>FM-1 ラボ</h1>
+  <p>小さなFM音源シンセ「FM-1」で、音の正体から作曲まで。読むだけではなく、<strong>弾くと画面が反応する</strong>教材です。全16章・約10時間。実機がなくても、画面の鍵盤とPCのキーボードで同じ課題ができます。</p>
+
+  <section class="card">
+    <h2>全体の進み具合</h2>
+    <div class="progress-bar"><i id="allbar" style="width:0%"></i></div>
+    <p class="muted" id="allText"></p>
+  </section>
+
+  <section class="card">
+    <h2>実機が届いたら、まずここ</h2>
+    <p><a href="diag.html"><strong>接続診断</strong></a>：MIDIでつながるか、鍵盤やつまみが何を送ってくるか、ブラウザから送ると鍵盤が光るか、USBで音が取れるかを確かめます。結果は「実機確認メモ」にたまります。</p>
+  </section>
+
+  <div id="toc"></div>
+
+  <section class="card">
+    <h2>付録</h2>
+    <p><a href="fw.html"><strong>ファーム図鑑</strong></a>：FM-1 を別の楽器にする、有志のカスタムファームウェア一覧。種類で絞り込めて、「入れてみた」「純正に戻せた」を記録できます。</p>
+  </section>
+
+  <section class="card" id="backup">
+    <h2>記録のバックアップ</h2>
+    <p>進み具合・実機確認メモ・保存した音・ファーム図鑑の記録は、<strong>このブラウザの中</strong>に保存されています。ときどきファイルに書き出しておくと、ブラウザのデータを消したときや、別の端末・別のアドレス（ネット公開版など）に移るときに、読み込んで元に戻せます。</p>
+    <p class="muted" id="bkStatus"></p>
+    <div class="btn-row">
+      <button class="btn" id="bkExport">ファイルに書き出す</button>
+      <label class="btn sub" for="bkFile" style="display:inline-block">ファイルから読み込む</label>
+      <input type="file" id="bkFile" accept="application/json,.json" hidden>
+    </div>
+    <p class="muted"><small>読み込みは「足し合わせ」です。いまの記録が消えたり古くなったりすることはありません。</small></p>
+    <p class="feedback" id="bkFb"></p>
+  </section>
+
+  <section class="card">
+    <h2>動作環境</h2>
+    <ul>
+      <li>PC の Chrome / Edge、Android の Chrome（実機は USB-OTG で接続）</li>
+      <li>一度開けば、オフラインでも使えます</li>
+      <li>進み具合はこのブラウザの中に保存されます（他の端末とは共有されません）</li>
+    </ul>
+    <p class="muted"><small>参考：<a href="https://github.com/Marcel-B/Felucca" rel="noopener">Felucca</a> ／ <a href="https://hugelton.github.io/Felucca/webapp/try/" rel="noopener">Felucca ブラウザ版</a> ／ <a href="https://github.com/keremimo/melodee" rel="noopener">Melodee</a></small></p>
+    <p class="muted"><small>この教材は M-VAVE や各ファームウェアの作者とは関係のない、個人用の教材です。</small></p>
+  </section>
+</main>
+<script type="module" src="js/index.js"></script>
+</body>
+</html>

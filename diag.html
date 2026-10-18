@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>接続診断 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main>
+  <h1>接続診断</h1>
+  <p>FM-1 が届いたら、まずここで「つながるか」「何が送られてくるか」「何を受け取ってくれるか」を確かめます。結果は下の<a href="#findings">実機確認メモ</a>に自動でたまり、教材の【要実機確認】を埋める材料になります。</p>
+
+  <section class="card">
+    <h2>0. いま使っているファームウェア</h2>
+    <div class="form-row">
+      <label>ファーム
+        <select id="fw">
+          <option value="stock">純正（M-VAVE）</option>
+          <option value="felucca">Felucca</option>
+          <option value="melodee">Melodee</option>
+          <option value="other">その他</option>
+        </select>
+      </label>
+      <label>バージョン（わかれば） <input type="text" id="fwver" size="10" placeholder="例 V15"></label>
+    </div>
+    <small>ここで選んだファーム名が、メモの各行に記録されます。ファームを入れ替えたら切り替えてからテストしてください。</small>
+  </section>
+
+  <section class="card">
+    <h2>1. ブラウザの対応状況</h2>
+    <dl class="kv" id="env"></dl>
+  </section>
+
+  <section class="card">
+    <h2>2. MIDI 接続</h2>
+    <div class="btn-row">
+      <button class="btn" id="connect">MIDI を許可してつなぐ</button>
+    </div>
+    <p class="feedback" id="connectFb"></p>
+    <div class="grid2">
+      <div>
+        <h3>入力（実機 → ブラウザ）</h3>
+        <ul id="inlist" class="muted"><li>未接続</li></ul>
+      </div>
+      <div>
+        <h3>出力（ブラウザ → 実機）</h3>
+        <ul id="outlist" class="muted"><li>未接続</li></ul>
+      </div>
+    </div>
+    <p class="muted"><small>Android は USB-OTG ケーブル（またはアダプタ）で接続します。抜き差しするとここの一覧が自動で変わります。</small></p>
+  </section>
+
+  <section class="card">
+    <h2>3. 受信ログ（実機を弾く・つまみを回す）</h2>
+    <div class="form-row">
+      <label><input type="checkbox" id="hideClock" checked> クロック／アクティブセンシングを隠す</label>
+      <button class="btn sub" id="clearLog">ログを消す</button>
+      <button class="btn sub" id="copyLog">ログをコピー</button>
+    </div>
+    <div class="log" id="log" aria-live="off"></div>
+    <h3>ここまでに分かったこと</h3>
+    <dl class="kv" id="stats"></dl>
+    <div class="check-hw">純正ファームで鍵盤が強さ（ベロシティ）を送るか、つまみがCCを送るか、クロックを出すかは未確認です。弱く・強く弾き分けて「強さの幅」が広がるか見てください。</div>
+  </section>
+
+  <section class="card">
+    <h2>4. 送信テスト（ブラウザ → 実機の鍵盤が光るか）</h2>
+    <p>Felucca の README には「鍵盤は、シーケンサーと MIDI IN が鳴らしている音を表示する」とあります。LED だけを光らせる専用命令は書かれていないので、ここでは<strong>ノートオン（音を鳴らす命令）を送って、鍵盤が光るか・音が鳴るか</strong>を見ます。</p>
+    <div class="check-hw">純正ファームで光るか、強さ1でも音が鳴るか、送った音が実機の MIDI OUT から跳ね返ってくるか（エコー）は未確認です。</div>
+    <div class="form-row">
+      <label>出力 <select id="out"></select></label>
+      <label>ch <input type="number" id="ch" min="1" max="16" value="1" style="width:4.5em"></label>
+      <label>音 <input type="number" id="note" min="0" max="127" value="60" style="width:5em"> <span id="noteName" class="muted"></span></label>
+      <label>強さ <input type="number" id="vel" min="1" max="127" value="1" style="width:5em"></label>
+      <label>長さ <input type="number" id="dur" min="50" max="5000" step="50" value="800" style="width:5.5em"> ms</label>
+    </div>
+    <div class="btn-row">
+      <button class="btn" id="send1">1音送る</button>
+      <button class="btn sub" id="sendScale">ドレミファソラシド</button>
+      <button class="btn sub" id="sendVelSweep">強さを 1→127 で5段階</button>
+      <button class="btn sub" id="panic">全部止める</button>
+    </div>
+    <p class="feedback" id="sendFb"></p>
+    <h3>結果を記録</h3>
+    <div class="btn-row" id="resultBtns">
+      <button class="chip" data-r="lit-sound">光った・音も鳴った</button>
+      <button class="chip" data-r="lit-only">光った・音は鳴らない</button>
+      <button class="chip" data-r="sound-only">音だけ鳴った</button>
+      <button class="chip" data-r="nothing">何も起きない</button>
+    </div>
+    <div class="form-row">
+      <label><input type="checkbox" id="saveLed"> この出力・ch・強さを、教材の「実機LEDガイド」に使う</label>
+    </div>
+    <details>
+      <summary>任意のメッセージを送る（上級者向け）</summary>
+      <div class="form-row">
+        <input type="text" id="raw" placeholder="例 B0 4A 40（16進、空白区切り）" size="28">
+        <button class="btn sub" id="sendRaw">送る</button>
+      </div>
+      <small class="muted">システムエクスクルーシブ（F0…）はこのページでは送れません（安全のため SysEx 許可を求めていません）。</small>
+    </details>
+  </section>
+
+  <section class="card">
+    <h2>5. USB オーディオ入力（実機の音をブラウザで聞き取る・実験的）</h2>
+    <p>Felucca は「Felucca」、Melodee は「Melodee」という名前のUSBオーディオ入力を持つと README に書かれています（macOS 13〜15 では MENU &gt; USB SERIAL を OFF にしないと見えない、とも）。</p>
+    <div class="check-hw">純正ファームにUSBオーディオがあるか、Android Chrome で入力として選べるかは未確認です。</div>
+    <div class="form-row">
+      <label>入力 <select id="adev"><option value="">（先に「許可して一覧を出す」）</option></select></label>
+      <button class="btn" id="aperm">許可して一覧を出す</button>
+      <button class="btn sub" id="astart">聞き取り開始</button>
+      <button class="btn sub" id="astop">止める</button>
+    </div>
+    <div id="meters">
+      <div class="meter"><span>L</span><div class="track"><i class="rms"></i><i class="peak"></i></div><span class="val">—</span></div>
+      <div class="meter"><span>R</span><div class="track"><i class="rms"></i><i class="peak"></i></div><span class="val">—</span></div>
+    </div>
+    <dl class="kv" id="ainfo" style="margin-top:10px"></dl>
+    <div class="scope-box" style="margin-top:10px">
+      <canvas id="ascope"></canvas>
+      <canvas id="aspec"></canvas>
+    </div>
+    <div class="btn-row">
+      <button class="chip" data-a="ok">実機の音で波形が動いた</button>
+      <button class="chip" data-a="silent">デバイスは出たが無音</button>
+      <button class="chip" data-a="none">デバイスが出てこない</button>
+    </div>
+  </section>
+
+  <section class="card" id="findings">
+    <h2>実機確認メモ</h2>
+    <p class="muted">このブラウザに保存されます。「コピー」で文章にして、教材づくりの相談に貼り付けてください。</p>
+    <table class="findings"><thead><tr><th>項目</th><th>結果</th><th>ファーム</th><th>日時</th></tr></thead><tbody id="ftable"></tbody></table>
+    <div class="btn-row">
+      <button class="btn" id="fcopy">メモをコピー</button>
+      <button class="btn sub" id="fclear">メモを消す</button>
+    </div>
+    <p class="feedback" id="fcopyFb"></p>
+  </section>
+</main>
+<script type="module" src="js/diag.js"></script>
+</body>
+</html>

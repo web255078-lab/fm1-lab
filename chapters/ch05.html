@@ -1,0 +1,330 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>第5章 シンセの仕組み | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="../manifest.webmanifest">
+<link rel="icon" href="../icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+<main>
+  <header class="chapter-head">
+    <div class="meta">第1部 届く前の予習 ・ 第5章 ・ 約65分 ・ 実機なしでOK</div>
+    <h1>シンセの仕組み</h1>
+    <div class="progress-bar" aria-label="この章の進み具合"><i id="chbar" style="width:0%"></i></div>
+  </header>
+
+  <section class="card">
+    <p>シンセサイザーは「音を<strong>作る</strong>楽器」です。つまみがたくさんあって怖く見えますが、やっていることは<strong>4つの工程</strong>だけ。この章では、ブラウザの中の小さなシンセで、その4つを1つずつ触ります。後半では、できた音に<strong>響きを足し</strong>、いくつかの音を<strong>混ぜる</strong>ところまで進みます。</p>
+    <p class="muted"><small>5-7 の「左右」は、イヤホンかヘッドホンで聞くとよく分かります。</small></p>
+    <p>つまみは、動かしながら鍵盤を弾くのがコツです。押しっぱなしにして、つまみを回してみてください。</p>
+  </section>
+
+  <!-- 5-1 -->
+  <section class="card lesson" id="l1" data-try="try1">
+    <div class="num">5-1</div>
+    <h2>材料を選ぶ</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>第1章で聞いた4つの形を、もう一度切り替えながら弾いてください。窓は「中身を見る」にしておきます。</p>
+      <div class="ctl-box" data-controls="wave"></div>
+      <p class="feedback" data-fb="try1"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>形ごとに、中身（倍音）の多さがちがいました。「のこぎり」と「しかく」は倍音がたっぷり、「なめらか」はほぼ何もなし。</p>
+      <p>シンセの音作りは、ここで選んだ<strong>材料</strong>から始まります。倍音の多い材料ほど、このあと削って作れる音の幅が広くなります。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>材料になる音を作る部分を<span class="term">オシレーター</span>（発振器）といいます。シンセの音の、いちばん最初の工程です。</p>
+    </div>
+  </section>
+
+  <!-- 5-2 -->
+  <section class="card lesson" id="l2" data-try="try2">
+    <div class="num">5-2</div>
+    <h2>削る</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>形を「のこぎり」にして、鍵盤を押しっぱなしにしたまま、<strong>「明るさ」を右端から左端まで</strong>ゆっくり回してください。窓の「中身を見る」と、下の図を見比べます。そのあと「クセ」も上げてみましょう。</p>
+      <div class="ctl-box" data-controls="wave,cutoff,resonance"></div>
+      <canvas class="viz" data-viz="filter" aria-label="フィルターの形"></canvas>
+      <p class="feedback" data-fb="try2"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>「明るさ」を下げると、音がこもって、だんだん毛布をかぶったような音になりました。窓の中身では、<strong>右側（高い倍音）から順に消えて</strong>いきます。下の図は「どの高さまでを通すか」の形で、つまみに合わせて右の肩が下がりました。</p>
+      <p>「クセ」を上げると、肩のところにとがった山ができて、ミョーンと鼻にかかった音になりました。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>倍音を削る部分を<span class="term">フィルター</span>といいます。高い方を削って低い方を通すのは<span class="term">ローパスフィルター</span>。「明るさ」は<span class="term">カットオフ周波数</span>（どこから削るか）、「クセ」は<span class="term">レゾナンス</span>（削り始めの境目を強調する量）です。</p>
+      <p>材料をたっぷり用意して、フィルターで削って形を整える。この作り方を<span class="term">減算合成</span>（サブトラクティブ合成）といいます。</p>
+    </div>
+
+    <div class="task" data-task="t2">
+      <h3>課題 5-2　明るさまね</h3>
+      <p>お題の音を聞いて、「明るさ」を同じくらいに合わせます。窓は隠れます（耳だけで）。3問中2問でクリア。</p>
+      <div class="ctl-box" data-controls="cutoff"></div>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-target disabled>お題を聞く</button>
+        <button class="btn sub" data-mine disabled>自分の音を聞く</button>
+        <button class="btn sub" data-decide disabled>これで決定</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-3 -->
+  <section class="card lesson" id="l3" data-try="try3">
+    <div class="num">5-3</div>
+    <h2>時間の形</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>4つのつまみを動かしながら、<strong>押しっぱなし→離す</strong>をくり返してください。下の図は「押してから離したあとまで、音量がどう動くか」です。</p>
+      <ul class="muted"><li>「立ち上がり」を右へ → ？</li><li>「残り」を左端に → ？</li><li>「余韻」を右へ → ？</li></ul>
+      <div class="ctl-box" data-controls="attack,decay,sustain,release"></div>
+      <canvas class="viz" data-viz="env" aria-label="エンベロープの形"></canvas>
+      <p class="feedback" data-fb="try3"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>同じ材料・同じ削り方でも、<strong>音量の時間変化</strong>だけで、まったくちがう楽器に聞こえました。</p>
+      <ul>
+        <li>立ち上がりが遅い → ふわっと始まる（弦楽器の合奏のよう）</li>
+        <li>残りがゼロ → 押しっぱなしでも消えていく（ピアノや打楽器のよう）</li>
+        <li>余韻が長い → 離したあとも響きが残る</li>
+      </ul>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>音量の時間の形を<span class="term">エンベロープ</span>といいます。4つのつまみはそれぞれ</p>
+      <ul>
+        <li><span class="term">アタック</span>（A）：押してから一番大きくなるまでの時間</li>
+        <li><span class="term">ディケイ</span>（D）：一番大きいところから下がる速さ</li>
+        <li><span class="term">サスティン</span>（S）：押している間に保たれる大きさ（これだけ「時間」ではなく「量」）</li>
+        <li><span class="term">リリース</span>（R）：離してから消えるまでの時間</li>
+      </ul>
+      <p>頭文字をとって<span class="term">ADSR</span>。ほとんどのシンセにある、共通語です。音量を担当する部分は<span class="term">アンプ</span>と呼びます。</p>
+    </div>
+
+    <div class="task" data-task="t3">
+      <h3>課題 5-3　楽器っぽくしよう</h3>
+      <p>お題を選んで、つまみで近づけて「判定」。4つのうち3つできたらクリア。見本も聞けます。</p>
+      <div class="btn-row" data-envq>
+        <button class="chip" data-q="piano">ピアノっぽく</button>
+        <button class="chip" data-q="organ">オルガンっぽく</button>
+        <button class="chip" data-q="strings">ストリングスっぽく</button>
+        <button class="chip" data-q="perc">木琴っぽく</button>
+      </div>
+      <p class="muted" data-envhint></p>
+      <div class="ctl-box" data-controls="attack,decay,sustain,release"></div>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-model disabled>見本を聞く</button>
+        <button class="btn sub" data-judge disabled>判定</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-4 -->
+  <section class="card lesson" id="l4" data-try="try4">
+    <div class="num">5-4</div>
+    <h2>揺らす</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>「揺れの深さ」を半分くらいまで上げて、押しっぱなしにします。「揺らす先」を切り替えて、どう聞こえるか比べてください。「揺れの速さ」もどうぞ。</p>
+      <div class="ctl-box" data-controls="lfoTarget,lfoRate,lfoDepth"></div>
+      <canvas class="viz" data-viz="lfo" aria-label="揺れの形"></canvas>
+      <p class="feedback" data-fb="try4"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>図の、ゆっくりした見えない波が、音のどこかをずっと押したり引いたりしていました。</p>
+      <ul>
+        <li>明るさを揺らす → ワウワウ、ウニョウニョ</li>
+        <li>高さを揺らす → 歌手の声のふるえのような音</li>
+        <li>大きさを揺らす → 音がふるえる、ゆれる</li>
+      </ul>
+      <p>この波は 1秒に数回くらい。第1章の「音」になる振動（1秒に数百回）より、ずっとゆっくりなので、音としては聞こえず「動き」として聞こえます。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>揺らすための、ゆっくりした波を作る部分を<span class="term">LFO</span>（ロー・フリクエンシー・オシレーター＝低い周波数のオシレーター）といいます。</p>
+      <p>高さの揺れは<span class="term">ビブラート</span>、大きさの揺れは<span class="term">トレモロ</span>、明るさの揺れは<span class="term">ワウ</span>とも呼びます。何かで何かを動かすことを、シンセでは<span class="term">モジュレーション</span>（変調）といいます。</p>
+    </div>
+
+    <div class="task" data-task="t4">
+      <h3>課題 5-4　何が揺れている？</h3>
+      <p>揺れている音が鳴ります。揺れているのは明るさ・高さ・大きさのどれ？ 3問中2問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-replay disabled>もう一度聞く</button>
+        <button class="chip" data-answer="cutoff" disabled>明るさ</button>
+        <button class="chip" data-answer="pitch" disabled>高さ</button>
+        <button class="chip" data-answer="amp" disabled>大きさ</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-5 -->
+  <section class="card lesson" id="l5" data-try="try5">
+    <div class="num">5-5</div>
+    <h2>全体図</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>下の図の工程を、<strong>1つずつ外して</strong>弾いてみてください。どの工程が、音のどこを担当していたかが分かります。</p>
+      <svg class="flow" viewBox="0 0 640 170" role="img" aria-label="音の流れ：オシレーター、フィルター、アンプ、スピーカー。LFOとエンベロープが横から動かす">
+        <defs><marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" class="flow-arrow"/></marker></defs>
+        <g class="flow-box" data-block="osc"><rect x="10" y="60" width="130" height="54" rx="10"/><text x="75" y="84">材料</text><text x="75" y="102" class="sub">オシレーター</text></g>
+        <g class="flow-box" data-block="filter"><rect x="180" y="60" width="130" height="54" rx="10"/><text x="245" y="84">削る</text><text x="245" y="102" class="sub">フィルター</text></g>
+        <g class="flow-box" data-block="amp"><rect x="350" y="60" width="130" height="54" rx="10"/><text x="415" y="84">時間の形</text><text x="415" y="102" class="sub">アンプ＋エンベロープ</text></g>
+        <g class="flow-box" data-block="out"><rect x="520" y="60" width="110" height="54" rx="10"/><text x="575" y="92">スピーカー</text></g>
+        <g class="flow-box" data-block="lfo"><rect x="180" y="4" width="130" height="34" rx="8"/><text x="245" y="26">揺らす（LFO）</text></g>
+        <path d="M140 87 H178" class="flow-line" marker-end="url(#ar)"/>
+        <path d="M310 87 H348" class="flow-line" marker-end="url(#ar)"/>
+        <path d="M480 87 H518" class="flow-line" marker-end="url(#ar)"/>
+        <path d="M245 38 V58" class="flow-line dashed" marker-end="url(#ar)"/>
+        <text x="320" y="150" class="sub" text-anchor="middle">音は左から右へ流れる。LFOは横から「動かす」</text>
+      </svg>
+      <div class="btn-row" id="bypass">
+        <button class="chip sel" data-bp="filter">フィルター：ON</button>
+        <button class="chip sel" data-bp="env">エンベロープ：ON</button>
+        <button class="chip sel" data-bp="lfo">LFO：ON</button>
+      </div>
+      <p class="feedback" data-fb="try5"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>フィルターを外すと、削る前の生の材料（ギラギラ）に。エンベロープを外すと、押した瞬間に「ブツッ」と始まって、離した瞬間に「ブツッ」と止まる、のっぺりした音に。LFOを外すと、動きがなくなりました。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>材料 → 削る → 時間の形 → スピーカー。この流れを<span class="term">信号の流れ</span>（シグナルフロー）と呼びます。多くのシンセの説明書は、この順番で書かれています。</p>
+      <p>そして FM-1 の「FM」は、<strong>材料の作り方そのものがちがう</strong>方式です。削るのではなく、オシレーターでオシレーターを揺らして倍音を<strong>生み出す</strong>。5-4 の「揺らす」を、ものすごく速くしたものだと思ってください。第8章で、実機で体験します。</p>
+      <div class="check-hw">FM-1 純正ファームの音作りのつまみ（どのパラメータを触れるか、フィルターやエンベロープがあるか）は未確認です。</div>
+    </div>
+  </section>
+
+
+  <!-- 5-6 -->
+  <section class="card lesson" id="l6" data-try="try6">
+    <div class="num">5-6</div>
+    <h2>響きを足す</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>下の4つのつまみを、<strong>1つずつ</strong>上げながら弾いてください。短く「ポン」と弾くと、違いが分かりやすいです。</p>
+      <div class="ctl-box" data-controls="drive,chorus,delay,delayTime,reverb"></div>
+      <p class="feedback" data-fb="try6"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <ul>
+        <li>歪み：音がジャリッと荒くなり、ギターのような迫力が出た。窓の「中身を見る」では倍音が増えている</li>
+        <li>ゆらぎ：1つの音が、何人かで鳴らしているように太く、きらきら揺れた</li>
+        <li>こだま：弾いた音が、少しずつ小さくなりながら何度も返ってきた</li>
+        <li>響き：広い部屋やホールで鳴らしたように、音のうしろに残響が広がった</li>
+      </ul>
+      <p>どれも、音そのもの（材料・削り方・時間の形）は変えずに、<strong>あとから加工</strong>しています。全体図でいうと、スピーカーの手前に入る工程です。</p>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>できた音をあとから加工する道具を<span class="term">エフェクト</span>といいます。歪み＝<span class="term">ディストーション</span>、ゆらぎ＝<span class="term">コーラス</span>、こだま＝<span class="term">ディレイ</span>、響き＝<span class="term">リバーブ</span>。</p>
+      <p>加工前の音を<span class="term">ドライ</span>、加工した音を<span class="term">ウェット</span>と呼びます。つまみの量は「ウェットをどれだけ混ぜるか」です。かけすぎると音がぼやけるので、<strong>少し物足りないくらい</strong>がコツです。</p>
+    </div>
+
+    <div class="task" data-task="t6">
+      <h3>課題 5-6　どのエフェクト？</h3>
+      <p>エフェクトのかかった音が鳴ります。どれがかかっているか当ててください。4問中3問でクリア。</p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-replay disabled>もう一度聞く</button>
+        <button class="chip" data-answer="drive" disabled>歪み</button>
+        <button class="chip" data-answer="chorus" disabled>ゆらぎ</button>
+        <button class="chip" data-answer="delay" disabled>こだま</button>
+        <button class="chip" data-answer="reverb" disabled>響き</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5-7 -->
+  <section class="card lesson" id="l7" data-try="try7">
+    <div class="num">5-7</div>
+    <h2>混ぜる</h2>
+    <div class="step try"><span class="tag">やってみる</span>
+      <p>「ループを流す」を押すと、ドラム・ベース・コードの3つが同時に鳴り続けます。流したまま、下のつまみを動かしてください。</p>
+      <ul class="muted">
+        <li>コードの「左右」を左いっぱいに → ？</li>
+        <li>ベースの「音量」を下げる・上げる → ？</li>
+        <li>どれか1つを「消音」 → ？</li>
+      </ul>
+      <div class="btn-row"><button class="btn" id="loopBtn">▶ ループを流す</button></div>
+      <div class="mixer" id="mixer"></div>
+      <p class="feedback" data-fb="try7"></p>
+    </div>
+    <button class="btn sub reveal-btn" data-reveal>先に答えを読む</button>
+    <div class="step what"><span class="tag">何が起きたか</span>
+      <p>3つの音は同じでも、<strong>バランス</strong>だけで聞こえ方が大きく変わりました。</p>
+      <ul>
+        <li>左右を動かすと、その楽器だけが片側から聞こえるようになり、ほかの楽器と重ならずに聞き分けやすくなった</li>
+        <li>音量を上げた楽器は前に出て、下げた楽器は後ろに下がった</li>
+        <li>響きを多く送った楽器は、遠くで鳴っているように感じた</li>
+      </ul>
+    </div>
+    <div class="step name"><span class="tag">それの名前</span>
+      <p>いくつかの音のバランスを整えることを<span class="term">ミックス</span>、その道具を<span class="term">ミキサー</span>といいます。左右の位置は<span class="term">パン</span>（定位）、1つの楽器だけ黙らせるのは<span class="term">ミュート</span>。</p>
+      <p>「響き」のように、1つのエフェクトにいくつもの楽器から少しずつ音を送るやり方を<span class="term">センド</span>といいます。みんなで同じ部屋の響きを共有するので、まとまりが出ます。</p>
+    </div>
+
+    <div class="task" data-task="t7">
+      <h3>課題 5-7　ミックスのお題</h3>
+      <p>お題を読んで、ミキサーを直して「判定」。ループは流したままでOK。3つ全部でクリア。</p>
+      <p class="quiz-q" data-q></p>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <div class="btn-row">
+        <button class="btn" data-start>はじめる</button>
+        <button class="btn sub" data-judge disabled>判定</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- 章末 -->
+  <section class="card" id="final">
+    <div class="num final-num">章末課題</div>
+    <h2>自分の音を作って保存</h2>
+    <p>ここまでの全部のつまみ（エフェクトも）を使って、自由に音を作ります。気に入ったら名前をつけて保存。<strong>ちがう音を2つ</strong>保存できたらクリア。保存した音はこのブラウザに残り、いつでも呼び出せます。</p>
+    <div class="ctl-box" data-controls="wave,cutoff,resonance,attack,decay,sustain,release,lfoTarget,lfoRate,lfoDepth,drive,chorus,delay,delayTime,reverb,pan,volume"></div>
+    <div class="task" data-task="final">
+      <div class="form-row">
+        <input type="text" data-pname placeholder="音の名前（例：ふわふわベル）" maxlength="24">
+        <button class="btn" data-save>保存</button>
+      </div>
+      <div><span class="status">未挑戦</span><span class="dots"></span></div>
+      <p class="feedback"></p>
+      <ul class="toc" data-plist></ul>
+    </div>
+  </section>
+
+  <section class="card" id="cando">
+    <h2>できるようになったこと</h2>
+    <ul class="toc" id="candoList"></ul>
+    <div class="btn-row"><button class="btn sub" id="resetCh">この章の記録を消す</button></div>
+  </section>
+
+  <section class="card">
+    <h2>FM-1 が届いたら</h2>
+    <p>実機のつまみを回したときに CC（コントロールチェンジ）が送られてくれば、この章のつまみも一緒に動くようにしてあります（74＝明るさ、71＝クセ、73＝立ち上がり、75＝減り方、72＝余韻。Felucca の README にある割り当て）。</p>
+    <div class="check-hw">FM-1 のつまみが CC を送るか、送るならどの番号かは未確認です。<a href="../diag.html">接続診断</a>の「届いたCC番号」で確かめられます。</div>
+    <p>Felucca の README には、トラックごとの音量（CC 7）・左右（CC 10）・リバーブ／コーラス／ディレイへ送る量（CC 91／93／94）を MIDI で動かせると書かれています。5-6・5-7 でやったことが、そのまま実機のトラックにもあるということです。第10章・第12章で実機のエフェクトとミックスを扱います。</p>
+    <div class="check-hw">純正ファームのエフェクトの種類と操作方法は未確認です。</div>
+    <p>これで第1部はおしまいです。次は実機が届いてから、<strong>第6章 開封と準備</strong>（準備中）。</p>
+    <p><a href="../index.html">目次にもどる</a></p>
+  </section>
+
+  <div class="dock" id="dock"></div>
+</main>
+<script type="module" src="../js/ch05.js"></script>
+</body>
+</html>

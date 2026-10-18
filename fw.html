@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>ファーム図鑑 | FM-1 ラボ</title>
+<meta name="theme-color" content="#e0612b">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<main>
+  <div class="meta muted">付録</div>
+  <h1>ファーム図鑑</h1>
+  <p>FM-1 は、中身のプログラム（ファームウェア）を入れ替えると<strong>別の楽器</strong>になります。世界中の有志が作ったファームを、種類ごとに並べました。気になる・入れてみた・純正に戻せた、をこのブラウザに記録できます。</p>
+
+  <div class="caution">ここに載っているのは、すべて M-VAVE 以外の有志が作ったもの（純正と Official Open を除く）で、入れるのは<strong>自己責任</strong>です。純正への戻り方はファームごとに違います。入れる前に、そのファームの説明書で「純正に戻す方法」を必ず読んでください（第11章でくわしく扱います）。</div>
+
+  <section class="card">
+    <div class="form-row">
+      <input type="text" id="q" placeholder="名前・作者・説明で探す" size="22">
+      <label><input type="checkbox" id="browserOnly"> ブラウザから入れられるものだけ</label>
+      <label><input type="checkbox" id="mineOnly"> 記録したものだけ</label>
+    </div>
+    <div class="btn-row" id="kinds"></div>
+    <p class="muted" id="count"></p>
+  </section>
+
+  <div id="list" class="fw-grid"></div>
+
+  <p class="muted"><small>出典：<a id="src" rel="noopener"></a>（<span id="asof"></span> 時点の一覧を日本語で要約）。一覧は日々増えています。ゲームや冗談ものなど一部は載せていません。</small></p>
+  <p><a href="index.html">目次にもどる</a></p>
+</main>
+<script type="module" src="js/fw.js"></script>
+</body>
+</html>
