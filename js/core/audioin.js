@@ -13,7 +13,8 @@ export async function listDevices() {
 }
 
 export function guessDevice(devs) {
-  return devs.find((d) => /fm-?1|m-?vave|felucca|melodee/i.test(d.label)) || null;
+  // Android では FM-1 が「USB audio」という名前で見えることがある（2026-10 実機で確認）
+  return devs.find((d) => /fm-?1|m-?vave|felucca|melodee/i.test(d.label)) || devs.find((d) => /usb audio/i.test(d.label)) || null;
 }
 
 export async function start(deviceId) {

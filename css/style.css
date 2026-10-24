@@ -346,3 +346,5 @@ svg.flow text.sub { fill: var(--muted); font-size: 11px; font-weight: 400; }
 .task .dots i.ok::after { content: "✓"; }
 .task .dots i.ng::after { content: "✗"; }
 .break-card { text-align: center; border-style: dashed; }
+
+.confirmed { border-left: 4px solid var(--ok); background: var(--ok-soft); padding: 8px 12px; border-radius: 8px; margin: 10px 0; font-size: 0.95rem; }
