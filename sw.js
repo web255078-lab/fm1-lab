@@ -1,6 +1,6 @@
 // オフライン対応：最初に全部をしまっておく。つながっていれば最新を取りに行き、だめならしまったものを出す。
 // ファイルを増やしたら PRECACHE に足し、VERSION を上げる。
-const VERSION = 'fm1lab-v12';
+const VERSION = 'fm1lab-v13';
 const PRECACHE = [
   './', './index.html', './diag.html', './fw.html',
   './chapters/ch01.html', './chapters/ch02.html', './chapters/ch03.html', './chapters/ch04.html', './chapters/ch05.html',

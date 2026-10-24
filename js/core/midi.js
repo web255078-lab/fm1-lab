@@ -9,8 +9,16 @@ const stateListeners = new Set(); // 接続状態変化 () => void
 export const supported = () => typeof navigator !== 'undefined' && !!navigator.requestMIDIAccess;
 export const getAccess = () => access;
 
-export async function connect() {
-  if (access) return access;
+// 画面の上のバーと診断ページが同時に呼んでも、つなぐのは1回だけ
+// （2回つなぐと同じ音が2回ずつ届く。2026-10 実機で発生）
+let pending = null;
+export function connect() {
+  if (access) return Promise.resolve(access);
+  if (!pending) pending = open().catch((e) => { pending = null; throw e; });
+  return pending;
+}
+
+async function open() {
   if (!supported()) throw new Error('このブラウザは Web MIDI に対応していません（PCのChrome/Edge、AndroidのChromeを使ってください）');
   access = await navigator.requestMIDIAccess({ sysex: false });
   access.onstatechange = () => {
@@ -34,9 +42,19 @@ export async function autoConnect() {
   return null;
 }
 
+// 同じ名前のポートが2つ見える端末もあるので、同じ時刻・同じ中身の2通目は捨てる
+let last = { name: '', bytes: '', t: -1 };
+function isDuplicate(input, data, t) {
+  const bytes = Array.from(data).join(',');
+  const dup = input.name === last.name && bytes === last.bytes && Math.abs(t - last.t) < 1;
+  last = { name: input.name, bytes, t };
+  return dup;
+}
+
 function bindInputs() {
   for (const input of access.inputs.values()) {
     input.onmidimessage = (e) => {
+      if (isDuplicate(input, e.data, e.timeStamp)) return;
       const msg = decode(e.data, e.timeStamp, input);
       listeners.forEach((fn) => fn(msg));
     };
