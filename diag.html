@@ -65,7 +65,7 @@
     <div class="log" id="log" aria-live="off"></div>
     <h3>ここまでに分かったこと</h3>
     <dl class="kv" id="stats"></dl>
-    <p class="confirmed">✅ 実機で確認（2026年10月・純正ファーム）：純正の鍵盤は「FM-1」という名前のポートから、チャンネル1・強さ90で一定の音を送ります。範囲は F3〜G5。</p><div class="check-hw">つまみが CC を送るか、クロックを出すかは未確認です。つまみを回したり、PLAY/STOP を押したりして、ログに何か出るか見てください。</div>
+    <p class="confirmed">✅ 実機で確認（2026年10月・純正ファーム）：純正の鍵盤は「FM-1」という名前のポートから、チャンネル1・強さ90で一定の音を送ります。範囲は F3〜G5。</p><p class="confirmed">✅ 実機で確認（2026年10月・純正ファーム）：つまみを回しても、PLAY/STOP を押しても、ログには何も出ませんでした。純正は<strong>つまみの CC もクロックも送りません</strong>。</p>
   </section>
 
   <section class="card">
@@ -109,7 +109,7 @@
   <section class="card">
     <h2>5. USB オーディオ入力（実機の音をブラウザで聞き取る・実験的）</h2>
     <p>Felucca は「Felucca」、Melodee は「Melodee」という名前のUSBオーディオ入力を持つと README に書かれています（macOS 13〜15 では MENU &gt; USB SERIAL を OFF にしないと見えない、とも）。</p>
-    <div class="check-hw">Android では、FM-1 をつなぐと入力の一覧に「<strong>USB audio</strong>」が出ました。前回は「既定」（スマホのマイク）で試していたので、<strong>「USB audio」を選んで</strong>もう一度試してください。それでも無音なら、純正ファームは USB で音を送らないと考えられます。</div>
+    <p class="confirmed">✅ 実機で確認（2026年10月・純正ファーム）：FM-1 を USB でスマホにつなぐと、この教材の音が<strong>スマホのスピーカーから出なくなりました</strong>（外すと鳴ります）。Android が音の出口を FM-1 に切り替えていると考えられます。</p><div class="check-hw">FM-1 のイヤホン端子にイヤホンを挿すと、この教材の音がそこから聞こえるかは未確認です。また、Android では、FM-1 をつなぐと入力の一覧に「<strong>USB audio</strong>」が出ました。前回は「既定」（スマホのマイク）で試していたので、<strong>「USB audio」を選んで</strong>もう一度試してください。それでも無音なら、純正ファームは USB で音を送らないと考えられます。</div>
     <div class="form-row">
       <label>入力 <select id="adev"><option value="">（先に「許可して一覧を出す」）</option></select></label>
       <button class="btn" id="aperm">許可して一覧を出す</button>
