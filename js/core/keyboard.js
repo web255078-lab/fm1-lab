@@ -76,7 +76,7 @@ export class Keyboard {
       const isC = n % 12 === 0;
       html += `<div class="${cls}" data-note="${n}" style="${style}" role="button" tabindex="-1" aria-label="${nameEn(n)}">
         ${pc ? `<span class="pc">${pc}</span>` : ''}
-        ${name ? `<span class="nm">${name}${isC ? `<small>${nameEn(n)}</small>` : ''}</span>` : ''}
+        ${name ? `<span class="nm">${name}<small>${isC ? nameEn(n) : nameEn(n).replace(/-?\d+$/, '')}</small></span>` : ''}
       </div>`;
     }
     this.kb.innerHTML = html;
