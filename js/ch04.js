@@ -34,6 +34,15 @@ const { kb, reveal, bindStart, markCleared, flashNg, ui } = ch;
 const CHORDS = {
   C: [60, 64, 67], Dm: [62, 65, 69], Em: [64, 67, 71], F: [60, 65, 69], G: [62, 67, 71], Am: [60, 64, 69],
 };
+// 押さえる音を「ラ・ド・ミ」のように。根音から並べ、光る形が並べ替え（転回形）ならそう言う
+const DOREMI = { 0: 'ド', 2: 'レ', 4: 'ミ', 5: 'ファ', 7: 'ソ', 9: 'ラ', 11: 'シ' };
+const ROOT = { C: 0, Dm: 2, Em: 4, F: 5, G: 7, Am: 9 };
+function howToHold(name) {
+  const r = ROOT[name];
+  const pcs = CHORDS[name].map((n) => n % 12).sort((a, b) => ((a - r + 12) % 12) - ((b - r + 12) % 12));
+  const inv = CHORDS[name][0] % 12 !== r;
+  return `${pcs.map((x) => DOREMI[x]).join('・')}${inv ? '。光るのは、届きやすく並べ替えた形＝転回形' : ''}`;
+}
 const pcsOf = (notes) => [...new Set(notes.map((n) => n % 12))].sort((a, b) => a - b);
 const NAMES12 = ['C', 'C#', 'D', 'E♭', 'E', 'F', 'F#', 'G', 'A♭', 'A', 'B♭', 'B'];
 // 押さえている音がメジャー/マイナーの3和音なら名前を返す
@@ -221,7 +230,7 @@ bindStart('p4', async (c) => {
     if (kb.latched) kb.releaseAll();
     guide.clear(kb);
     guide.show(kb, CHORDS[prog[i]]);
-    c.u.fb(`${prog[i]} を押さえて`);
+    c.u.fb(`${prog[i]} を押さえて（${howToHold(prog[i])}）`);
     const r = await c.wait(waitChord(CHORDS[prog[i]], { octaveFree: true }));
     if (!r) return;
     dots[i] = 'ok';
